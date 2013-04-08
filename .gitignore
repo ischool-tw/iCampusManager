@@ -1,1 +1,3 @@
 *.cache
+/iCampusManager/obj
+/iCampusManager/bin

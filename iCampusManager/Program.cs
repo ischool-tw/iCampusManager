@@ -45,6 +45,7 @@ namespace iCampusManager
             new FieldManager();
             new SearchSchool();
             new DetailItems();
+            new RibbonButtons();
 
             RefreshFilteredSource();
 
