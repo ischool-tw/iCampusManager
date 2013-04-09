@@ -197,6 +197,12 @@
     <Compile Include="Items\UDTTableDefContent.Designer.cs">
       <DependentUpon>UDTTableDefContent.cs</DependentUpon>
     </Compile>
+    <Compile Include="Items\WebGadgetItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Items\WebGadgetItem.Designer.cs">
+      <DependentUpon>WebGadgetItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="ListPaneFieldImproved.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

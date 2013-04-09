@@ -11,10 +11,11 @@ namespace iCampusManager
         {
             Program.MainPanel.RegisterDetailContent<BasicInfoItem>();
             //Program.MainPanel.RegisterDetailContent<NetworkItem>();
+            Program.MainPanel.RegisterDetailContent<UDMItem>();
             Program.MainPanel.RegisterDetailContent<UDTItem>();
             Program.MainPanel.RegisterDetailContent<UDSItem>();
-            Program.MainPanel.RegisterDetailContent<UDMItem>();
             Program.MainPanel.RegisterDetailContent<ModuleItem>();
+            Program.MainPanel.RegisterDetailContent<WebGadgetItem>();
         }
     }
 }
