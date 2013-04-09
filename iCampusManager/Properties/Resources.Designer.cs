@@ -69,5 +69,25 @@ namespace iCampusManager.Properties {
                 return ((byte[])(obj));
             }
         }
+        
+        /// <summary>
+        ///   查詢型別 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap Import_Image {
+            get {
+                object obj = ResourceManager.GetObject("Import_Image", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢型別 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap lamp_search_128 {
+            get {
+                object obj = ResourceManager.GetObject("lamp_search_128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

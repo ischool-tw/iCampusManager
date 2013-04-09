@@ -47,10 +47,6 @@
       <HintPath>C:\Users\Yaoming\Desktop\FiscaRuntime\modules\Campus\Campus.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Campus.Configuration">
-      <HintPath>C:\Users\Yaoming\Desktop\FiscaRuntime\modules\Campus\Campus.Configuration.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="DevComponents.DotNetBar2, Version=9.5.0.1, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
     <Reference Include="FISCA">
       <HintPath>C:\Users\Yaoming\Desktop\FiscaAE\kernel\FISCA.dll</HintPath>
@@ -61,11 +57,15 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="FISCA.Core">
-      <HintPath>..\..\DSA30\IntelliSchool.Tools.DSAServer\ManagementStudio\Libraries\FISCA.Core.dll</HintPath>
+      <HintPath>..\..\..\Desktop\FiscaRuntime\kernel\FISCA.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="FISCA.Data">
       <HintPath>C:\Users\Yaoming\Desktop\FiscaRuntime\kernel\FISCA.Data.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="FISCA.DSAClient">
+      <HintPath>..\..\..\Desktop\FiscaRuntime\kernel\FISCA.DSAClient.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="FISCA.Permission">
@@ -103,6 +103,7 @@
     <Compile Include="ChangeListener\NumericUpDownSource.cs" />
     <Compile Include="ChangeListener\RadioButtonSource.cs" />
     <Compile Include="ChangeListener\TextBoxSource.cs" />
+    <Compile Include="ConnectionHelper.cs" />
     <Compile Include="DefaultView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -118,6 +119,12 @@
     <Compile Include="DetailContentImprovedMsg.designer.cs">
       <DependentUpon>DetailContentImprovedMsg.cs</DependentUpon>
     </Compile>
+    <Compile Include="DetailItemDescription.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DetailItemDescription.Designer.cs">
+      <DependentUpon>DetailItemDescription.cs</DependentUpon>
+    </Compile>
     <Compile Include="DetailItems.cs" />
     <Compile Include="Extension_DataTable.cs" />
     <Compile Include="Fields\FieldManager.cs" />
@@ -131,11 +138,35 @@
     <Compile Include="Items\BasicInfoItem.Designer.cs">
       <DependentUpon>BasicInfoItem.cs</DependentUpon>
     </Compile>
+    <Compile Include="Items\ModuleItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Items\ModuleItem.Designer.cs">
+      <DependentUpon>ModuleItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Items\NetworkItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Items\NetworkItem.Designer.cs">
       <DependentUpon>NetworkItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Items\UDMItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Items\UDMItem.Designer.cs">
+      <DependentUpon>UDMItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Items\UDSItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Items\UDSItem.Designer.cs">
+      <DependentUpon>UDSItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Items\UDTItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Items\UDTItem.Designer.cs">
+      <DependentUpon>UDTItem.cs</DependentUpon>
     </Compile>
     <Compile Include="ListPaneFieldImproved.cs" />
     <Compile Include="Program.cs" />
@@ -171,11 +202,17 @@
     <EmbeddedResource Include="DetailContentImprovedMsg.resx">
       <DependentUpon>DetailContentImprovedMsg.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DetailItemDescription.resx">
+      <DependentUpon>DetailItemDescription.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Items\BasicInfoItem.resx">
       <DependentUpon>BasicInfoItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Items\NetworkItem.resx">
       <DependentUpon>NetworkItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Items\UDSItem.resx">
+      <DependentUpon>UDSItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -200,6 +237,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\import.image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lamp_search_128.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

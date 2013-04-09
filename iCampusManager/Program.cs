@@ -28,6 +28,8 @@ namespace iCampusManager
 
         public static NLDPanel MainPanel { get; private set; }
 
+        public static DynamicCache GlobalSchoolCache { get; private set; }
+
         /// <summary>
         /// 應用程式的主要進入點。
         /// </summary>
@@ -35,6 +37,11 @@ namespace iCampusManager
         public static void Main()
         {
             DSAServices.AutoDisplayLoadingMessageOnMotherForm();
+
+            if (DSAServices.AccessPoint.ToLower() != "campusman.ischool.com.tw")
+                throw new ApplicationStartupException("不支援，請登入 campusman.ischool.com.tw！");
+
+            GlobalSchoolCache = new DynamicCache(); //建立一個空的快取。
 
             InitAsposeLicense();
             InitStartMenu();
@@ -56,9 +63,50 @@ namespace iCampusManager
         {
             MainPanel = new NLDPanel();
             MainPanel.Group = "學校";
+            MainPanel.SetDescriptionPaneBulider<DetailItemDescription>();
+
+            InitBasicSearch();
 
             MotherForm.AddPanel(MainPanel);
             MainPanel.AddView(new DefaultView());
+        }
+
+        private static void InitBasicSearch()
+        {
+            MainPanel.Search += delegate(object sender, SearchEventArgs args)
+            {
+                string cond = args.Condition;
+                foreach (string each in GlobalSchoolCache.PrimaryKeys)
+                {
+                    string text = GlobalSchoolCache[each].Title;
+                    if (text.IndexOf(cond) >= 0)
+                    {
+                        args.Result.Add(each);
+                        continue;
+                    }
+
+                    text = GlobalSchoolCache[each].DSNS;
+                    if (text.IndexOf(cond) >= 0)
+                    {
+                        args.Result.Add(each);
+                        continue;
+                    }
+
+                    text = GlobalSchoolCache[each].Group;
+                    if (text.IndexOf(cond) >= 0)
+                    {
+                        args.Result.Add(each);
+                        continue;
+                    }
+
+                    text = GlobalSchoolCache[each].Comment;
+                    if (text.IndexOf(cond) >= 0)
+                    {
+                        args.Result.Add(each);
+                        continue;
+                    }
+                }
+            };
         }
 
         internal static void RefreshFilteredSource()
@@ -71,13 +119,18 @@ namespace iCampusManager
             List<string> schoolids = new List<string>();
             Task task = Task.Factory.StartNew(() =>
             {
-                QueryHelper query = new QueryHelper();
+                AccessHelper access = new AccessHelper();
 
-                DataTable dt = query.Select("select uid from $school");
+                List<School> schools = access.Select<School>();
 
-                foreach (DataRow row in dt.Rows)
-                    schoolids.Add(row["uid"] + "");
-
+                foreach (School school in schools)
+                {
+                    schoolids.Add(school.UID);
+                    GlobalSchoolCache.FillProperty(school.UID, "Title", school.Title);
+                    GlobalSchoolCache.FillProperty(school.UID, "DSNS", school.DSNS);
+                    GlobalSchoolCache.FillProperty(school.UID, "Group", school.Group);
+                    GlobalSchoolCache.FillProperty(school.UID, "Comment", school.Comment);
+                }
             }, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default);
 
             task.ContinueWith((x) =>
@@ -134,7 +187,7 @@ namespace iCampusManager
             }
             catch (Exception) { }
 
-            return string.Format("ischool 監控中心〈FISCA：{0}〉〈{1}〉", version, user);
+            return string.Format("ischool 中央管理系統〈FISCA：{0}〉〈{1}〉", version, user);
         }
     }
 }

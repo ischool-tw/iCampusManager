@@ -14,6 +14,7 @@ namespace iCampusManager
     {
         public ImportSchool()
         {
+            Program.MainPanel.RibbonBarItems["管理"]["匯入"].Image = Properties.Resources.Import_Image;
             Program.MainPanel.RibbonBarItems["管理"]["匯入"].Size = FISCA.Presentation.RibbonBarButton.MenuButtonSize.Large;
             Program.MainPanel.RibbonBarItems["管理"]["匯入"].Click += delegate
             {
