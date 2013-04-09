@@ -10,7 +10,7 @@ namespace iCampusManager
         public DetailItems()
         {
             Program.MainPanel.RegisterDetailContent<BasicInfoItem>();
-            Program.MainPanel.RegisterDetailContent<NetworkItem>();
+            //Program.MainPanel.RegisterDetailContent<NetworkItem>();
             Program.MainPanel.RegisterDetailContent<UDTItem>();
             Program.MainPanel.RegisterDetailContent<UDSItem>();
             Program.MainPanel.RegisterDetailContent<UDMItem>();

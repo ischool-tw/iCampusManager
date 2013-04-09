@@ -31,6 +31,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvUDS = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.chName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnInstall = new DevComponents.DotNetBar.ButtonX();
+            this.btnDelete = new DevComponents.DotNetBar.ButtonX();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUDS)).BeginInit();
             this.SuspendLayout();
             // 
@@ -38,6 +40,7 @@
             // 
             this.dgvUDS.AllowUserToAddRows = false;
             this.dgvUDS.AllowUserToDeleteRows = false;
+            this.dgvUDS.AllowUserToResizeRows = false;
             this.dgvUDS.BackgroundColor = System.Drawing.Color.White;
             this.dgvUDS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvUDS.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -54,10 +57,13 @@
             this.dgvUDS.Location = new System.Drawing.Point(13, 8);
             this.dgvUDS.Name = "dgvUDS";
             this.dgvUDS.ReadOnly = true;
+            this.dgvUDS.RowHeadersVisible = false;
             this.dgvUDS.RowHeadersWidth = 25;
             this.dgvUDS.RowTemplate.Height = 24;
-            this.dgvUDS.Size = new System.Drawing.Size(524, 338);
+            this.dgvUDS.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvUDS.Size = new System.Drawing.Size(524, 315);
             this.dgvUDS.TabIndex = 0;
+            this.dgvUDS.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvUDS_CellMouseDoubleClick);
             // 
             // chName
             // 
@@ -66,10 +72,36 @@
             this.chName.Name = "chName";
             this.chName.ReadOnly = true;
             // 
+            // btnInstall
+            // 
+            this.btnInstall.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnInstall.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnInstall.Location = new System.Drawing.Point(462, 329);
+            this.btnInstall.Name = "btnInstall";
+            this.btnInstall.Size = new System.Drawing.Size(75, 23);
+            this.btnInstall.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnInstall.TabIndex = 1;
+            this.btnInstall.Text = "安裝/更新";
+            this.btnInstall.Click += new System.EventHandler(this.btnInstall_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnDelete.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnDelete.Location = new System.Drawing.Point(381, 329);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnDelete.TabIndex = 2;
+            this.btnDelete.Text = "刪除";
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
             // UDSItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnInstall);
             this.Controls.Add(this.dgvUDS);
             this.Name = "UDSItem";
             this.Size = new System.Drawing.Size(550, 360);
@@ -82,5 +114,7 @@
 
         private DevComponents.DotNetBar.Controls.DataGridViewX dgvUDS;
         private System.Windows.Forms.DataGridViewTextBoxColumn chName;
+        private DevComponents.DotNetBar.ButtonX btnInstall;
+        private DevComponents.DotNetBar.ButtonX btnDelete;
     }
 }

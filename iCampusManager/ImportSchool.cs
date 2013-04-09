@@ -60,7 +60,7 @@ namespace iCampusManager
         {
             try
             {
-                Dictionary<string, int> column_map = new Dictionary<string, int>();
+                Dictionary<string, int> column_map = new Dictionary<string, int>(StringComparer.CurrentCultureIgnoreCase);
 
                 Workbook book = new Workbook();
                 book.Open(fileName, FileFormatType.Excel2007Xlsx);
