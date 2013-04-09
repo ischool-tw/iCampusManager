@@ -8,7 +8,7 @@ namespace iCampusManager
     internal class DetailItems
     {
         public DetailItems()
-        {//ABC
+        {
             Program.MainPanel.RegisterDetailContent<BasicInfoItem>();
             Program.MainPanel.RegisterDetailContent<NetworkItem>();
             Program.MainPanel.RegisterDetailContent<UDTItem>();
