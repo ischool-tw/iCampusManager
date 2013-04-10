@@ -149,6 +149,12 @@
     <Compile Include="Fields\DSNSField.cs" />
     <Compile Include="Fields\GroupField.cs" />
     <Compile Include="ImportSchool.cs" />
+    <Compile Include="InputBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InputBox.designer.cs">
+      <DependentUpon>InputBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Items\BasicInfoItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -173,11 +179,11 @@
     <Compile Include="Items\UDMItem.Designer.cs">
       <DependentUpon>UDMItem.cs</DependentUpon>
     </Compile>
-    <Compile Include="Items\UDSContractDefContent.cs">
+    <Compile Include="Items\SimpleDefContent.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Items\UDSContractDefContent.Designer.cs">
-      <DependentUpon>UDSContractDefContent.cs</DependentUpon>
+    <Compile Include="Items\SimpleDefContent.Designer.cs">
+      <DependentUpon>SimpleDefContent.cs</DependentUpon>
     </Compile>
     <Compile Include="Items\UDSItem.cs">
       <SubType>UserControl</SubType>
@@ -262,14 +268,20 @@
     <EmbeddedResource Include="DetailItemDescription.resx">
       <DependentUpon>DetailItemDescription.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="InputBox.resx">
+      <DependentUpon>InputBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Items\BasicInfoItem.resx">
       <DependentUpon>BasicInfoItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Items\NetworkItem.resx">
       <DependentUpon>NetworkItem.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Items\UDSContractDefContent.resx">
-      <DependentUpon>UDSContractDefContent.cs</DependentUpon>
+    <EmbeddedResource Include="Items\UDMItem.resx">
+      <DependentUpon>UDMItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Items\SimpleDefContent.resx">
+      <DependentUpon>SimpleDefContent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Items\UDSItem.resx">
       <DependentUpon>UDSItem.cs</DependentUpon>

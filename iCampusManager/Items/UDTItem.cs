@@ -37,7 +37,7 @@ namespace iCampusManager
             if (error != null)
             {
                 RTOut.WriteError(error);
-                return;
+                throw error;
             }
 
             dgvUDT.Rows.Clear();

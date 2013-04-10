@@ -2,7 +2,7 @@
 
 namespace iCampusManager
 {
-    partial class UDSContractDefContent
+    partial class SimpleDefContent
     {
         /// <summary>
         /// Required designer variable.

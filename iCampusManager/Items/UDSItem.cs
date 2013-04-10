@@ -38,7 +38,7 @@ namespace iCampusManager
             if (error != null)
             {
                 RTOut.WriteError(error);
-                return;
+                throw error;
             }
 
             dgvUDS.Rows.Clear();
@@ -136,7 +136,7 @@ namespace iCampusManager
 
             XElement contract = UDS.XPathSelectElement(string.Format("Contract[@Name='{0}']", name));
 
-            UDSContractDefContent udscontent = new UDSContractDefContent();
+            SimpleDefContent udscontent = new SimpleDefContent();
             udscontent.Text = name;
             udscontent.SetXmlContent(contract.ToString());
             udscontent.ShowDialog();

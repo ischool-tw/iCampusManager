@@ -200,7 +200,7 @@ namespace iCampusManager
 
         private void ShowErrorPanel(Exception ex)
         {
-            string help = "很抱歉，因工程師未周詳考慮，目前資料項目已經發生錯誤，訊息如下：\r\n";
+            string help = "很抱歉，目前資料項目已經炸掉！訊息如下：\r\n";
             string msg = ErrorReport.Generate(ex);
             MsgPanel = new DetailContentImprovedMsg();
             Controls.Add(MsgPanel);

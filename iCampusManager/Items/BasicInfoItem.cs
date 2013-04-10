@@ -7,12 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using FISCA.UDT;
+using FISCA.DSA;
 
 namespace iCampusManager
 {
     public partial class BasicInfoItem : DetailContentImproved
     {
         private School SchoolData { get; set; }
+
+        private string PhysicalUrl { get; set; }
 
         public BasicInfoItem()
         {
@@ -51,6 +54,19 @@ namespace iCampusManager
                 SchoolData = schools[0];
             else
                 SchoolData = null;
+
+            ResolveUrl();
+        }
+
+        private void ResolveUrl()
+        {
+            PhysicalUrl = string.Empty;
+            if (SchoolData != null)
+            {
+                AccessPoint ap;
+                if (AccessPoint.TryParse(SchoolData.DSNS, out ap))
+                    PhysicalUrl = ap.Url;
+            }
         }
 
         protected override void OnPrimaryKeyChangedComplete(Exception error)
@@ -62,6 +78,7 @@ namespace iCampusManager
                 txtDSNS.Text = SchoolData.DSNS;
                 txtGroup.Text = SchoolData.Group;
                 txtComment.Text = SchoolData.Comment;
+                txtPhysicalUrl.Text = PhysicalUrl;
                 ResetDirtyStatus();
             }
             else

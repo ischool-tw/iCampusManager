@@ -10,9 +10,9 @@ using FISCA.Presentation.Controls;
 
 namespace iCampusManager
 {
-    public partial class UDSContractDefContent : BaseForm
+    public partial class SimpleDefContent : BaseForm
     {
-        public UDSContractDefContent()
+        public SimpleDefContent()
         {
             InitializeComponent();
         }

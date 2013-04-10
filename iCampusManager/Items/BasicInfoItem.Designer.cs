@@ -36,6 +36,8 @@
             this.txtTitle = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.txtDSNS = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.txtGroup = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX1 = new DevComponents.DotNetBar.LabelX();
+            this.txtPhysicalUrl = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.SuspendLayout();
             // 
             // label1
@@ -143,20 +145,49 @@
             this.txtGroup.Size = new System.Drawing.Size(188, 25);
             this.txtGroup.TabIndex = 8;
             // 
+            // labelX1
+            // 
+            this.labelX1.AutoSize = true;
+            // 
+            // 
+            // 
+            this.labelX1.BackgroundStyle.Class = "";
+            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX1.Location = new System.Drawing.Point(14, 139);
+            this.labelX1.Name = "labelX1";
+            this.labelX1.Size = new System.Drawing.Size(34, 21);
+            this.labelX1.TabIndex = 4;
+            this.labelX1.Text = "位置";
+            // 
+            // txtPhysicalUrl
+            // 
+            // 
+            // 
+            // 
+            this.txtPhysicalUrl.Border.Class = "TextBoxBorder";
+            this.txtPhysicalUrl.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtPhysicalUrl.Location = new System.Drawing.Point(65, 137);
+            this.txtPhysicalUrl.Name = "txtPhysicalUrl";
+            this.txtPhysicalUrl.ReadOnly = true;
+            this.txtPhysicalUrl.Size = new System.Drawing.Size(464, 25);
+            this.txtPhysicalUrl.TabIndex = 8;
+            // 
             // BasicInfoItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.txtPhysicalUrl);
             this.Controls.Add(this.txtGroup);
             this.Controls.Add(this.txtDSNS);
             this.Controls.Add(this.txtTitle);
             this.Controls.Add(this.txtComment);
+            this.Controls.Add(this.labelX1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "BasicInfoItem";
-            this.Size = new System.Drawing.Size(550, 135);
+            this.Size = new System.Drawing.Size(550, 185);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -172,5 +203,7 @@
         private DevComponents.DotNetBar.Controls.TextBoxX txtTitle;
         private DevComponents.DotNetBar.Controls.TextBoxX txtDSNS;
         private DevComponents.DotNetBar.Controls.TextBoxX txtGroup;
+        private DevComponents.DotNetBar.LabelX labelX1;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtPhysicalUrl;
     }
 }
