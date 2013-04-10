@@ -20,6 +20,7 @@ namespace iCampusManager
         {
             InitializeComponent();
             Group = "UDM";
+            dgvUDM.AutoGenerateColumns = false;
         }
 
         protected override void OnPrimaryKeyChangedAsync()
@@ -41,32 +42,16 @@ namespace iCampusManager
 
             dgvUDM.Rows.Clear();
 
-            Dictionary<string, XElement> udm = new Dictionary<string, XElement>();
-
+            List<UDMGridRow> udms = new List<UDMGridRow>();
             foreach (XElement each in UDM.Elements("Module"))
+                udms.Add(new UDMGridRow(each));
+
+            udms.Sort((x, y) =>
             {
-                string name = each.ElementText("Name");
-                udm.Add(name, each);
-            }
+                return x.Name.CompareTo(y.Name);
+            });
 
-            IOrderedEnumerable<KeyValuePair<string, XElement>> result = udm.OrderBy(x => x.Key);
-
-            foreach (KeyValuePair<string, XElement> each in result)
-            {
-                DataGridViewRow row = new DataGridViewRow();
-
-                string urlPart = each.Value.ElementText("URL").Replace("https://module.ischool.com.tw/module", "~");
-                urlPart = urlPart.Replace("http://module.ischool.com.tw/module", "~");
-                urlPart = urlPart.Replace("http://module.ischool.com.tw:8080/module", "~");
-                urlPart = urlPart.Replace("https://module.ischool.com.tw:8080/module", "~");
-
-                string version = each.Value.ElementText("Version");
-
-                row.CreateCells(dgvUDM, each.Key, version, urlPart);
-                row.Tag = each.Value;
-
-                dgvUDM.Rows.Add(row);
-            }
+            dgvUDM.DataSource = new BindingList<UDMGridRow>(udms);
         }
 
         private void btnInstall_Click(object sender, EventArgs e)
@@ -95,7 +80,44 @@ namespace iCampusManager
 
         private void btnCheckUpdate_Click(object sender, EventArgs e)
         {
+            IEnumerable<UDMGridRow> udms = GetSelectedUDM();
 
+            MultiTaskingRunner runner = new MultiTaskingRunner();
+
+            foreach (UDMGridRow udm in udms)
+            {
+                runner.AddTask(udm.Name, x =>
+                {
+                    UDMGridRow s = x as UDMGridRow;
+                    CheckUDMNewVersion(s);
+                }, udm, new System.Threading.CancellationTokenSource());
+            }
+
+            runner.AllTaskCompleted += delegate
+            {
+            };
+
+            runner.ExecuteTasks();
+        }
+
+        private void CheckUDMNewVersion(UDMGridRow s)
+        {
+            ConnectionHelper conn = ConnectionHelper.GetConnection(PrimaryKey);
+
+            XElement req = new XElement("Request", new XElement("ModuleName", s.Name));
+
+            Envelope rsp = conn.CallService("UDMService.CheckUpdate", new Envelope(new XStringHolder(req)));
+            XElement rspxml = XElement.Parse(rsp.BodyContent.XmlString);
+            bool hasUpdate = rspxml.ElementBool("HasUpdate", false);
+
+            if (hasUpdate)
+                s.Version = s.RawData.ElementText("Version") + "*";
+        }
+
+        private IEnumerable<UDMGridRow> GetSelectedUDM()
+        {
+            foreach (DataGridViewRow row in dgvUDM.Rows)
+                yield return row.DataBoundItem as UDMGridRow;
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -110,7 +132,7 @@ namespace iCampusManager
                     return;
 
                 DataGridViewRow row = dgvUDM.SelectedRows[0];
-                string name = row.Cells["chName"].Value + "";
+                string name = (row.DataBoundItem as UDMGridRow).Name;
                 XElement req = new XElement("Request", new XElement("ModuleName", name));
 
                 ConnectionHelper conn = ConnectionHelper.GetConnection(PrimaryKey);
@@ -126,19 +148,64 @@ namespace iCampusManager
             }
         }
 
-        private void dgvUDM_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvUDM_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.RowIndex < 0)
                 return;
 
             DataGridViewRow row = dgvUDM.Rows[e.RowIndex];
 
-            string xml = (row.Tag as XElement).ToString();
+            string xml = (row.DataBoundItem as UDMGridRow).RawData.ToString();
 
             SimpleDefContent udscontent = new SimpleDefContent();
             udscontent.Text = row.Cells["chName"].Value + "";
             udscontent.SetXmlContent(xml);
             udscontent.ShowDialog();
+
+        }
+
+        class UDMGridRow : INotifyPropertyChanged
+        {
+            public UDMGridRow(XElement data)
+            {
+                RawData = data;
+
+                Name = data.ElementText("Name");
+                Provider = data.ElementText("Provider");
+                Version = data.ElementText("Version");
+
+                string urlPart = data.ElementText("URL").Replace("https://module.ischool.com.tw/module", "~");
+                urlPart = urlPart.Replace("http://module.ischool.com.tw/module", "~");
+                urlPart = urlPart.Replace("http://module.ischool.com.tw:8080/module", "~");
+                urlPart = urlPart.Replace("https://module.ischool.com.tw:8080/module", "~");
+                Url = urlPart;
+            }
+
+            public string Name { get; private set; }
+
+            public string Provider { get; private set; }
+
+            private string _version = string.Empty;
+            public string Version
+            {
+                get { return _version; }
+                set
+                {
+                    _version = value;
+                    if (PropertyChanged != null)
+                        PropertyChanged(this, new PropertyChangedEventArgs("Version"));
+                }
+            }
+
+            public string Url { get; private set; }
+
+            public XElement RawData { get; set; }
+
+            #region INotifyPropertyChanged 成員
+
+            public event PropertyChangedEventHandler PropertyChanged;
+
+            #endregion
         }
     }
 }

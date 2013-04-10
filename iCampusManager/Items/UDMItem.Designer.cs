@@ -32,10 +32,10 @@
             this.btnDelete = new DevComponents.DotNetBar.ButtonX();
             this.btnInstall = new DevComponents.DotNetBar.ButtonX();
             this.dgvUDM = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.btnCheckUpdate = new DevComponents.DotNetBar.ButtonX();
             this.chName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.chVersion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.chUrl = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnCheckUpdate = new DevComponents.DotNetBar.ButtonX();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUDM)).BeginInit();
             this.SuspendLayout();
             // 
@@ -93,7 +93,31 @@
             this.dgvUDM.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvUDM.Size = new System.Drawing.Size(524, 315);
             this.dgvUDM.TabIndex = 3;
-            this.dgvUDM.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUDM_CellContentDoubleClick);
+            this.dgvUDM.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvUDM_CellMouseDoubleClick);
+            // 
+            // chName
+            // 
+            this.chName.DataPropertyName = "Name";
+            this.chName.HeaderText = "名稱";
+            this.chName.Name = "chName";
+            this.chName.ReadOnly = true;
+            this.chName.Width = 160;
+            // 
+            // chVersion
+            // 
+            this.chVersion.DataPropertyName = "Version";
+            this.chVersion.HeaderText = "版本";
+            this.chVersion.Name = "chVersion";
+            this.chVersion.ReadOnly = true;
+            this.chVersion.Width = 70;
+            // 
+            // chUrl
+            // 
+            this.chUrl.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.chUrl.DataPropertyName = "Url";
+            this.chUrl.HeaderText = "位置";
+            this.chUrl.Name = "chUrl";
+            this.chUrl.ReadOnly = true;
             // 
             // btnCheckUpdate
             // 
@@ -104,29 +128,8 @@
             this.btnCheckUpdate.Size = new System.Drawing.Size(75, 23);
             this.btnCheckUpdate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnCheckUpdate.TabIndex = 5;
-            this.btnCheckUpdate.Text = "更新全部";
+            this.btnCheckUpdate.Text = "檢查更新";
             this.btnCheckUpdate.Click += new System.EventHandler(this.btnCheckUpdate_Click);
-            // 
-            // chName
-            // 
-            this.chName.HeaderText = "名稱";
-            this.chName.Name = "chName";
-            this.chName.ReadOnly = true;
-            this.chName.Width = 160;
-            // 
-            // chVersion
-            // 
-            this.chVersion.HeaderText = "版本";
-            this.chVersion.Name = "chVersion";
-            this.chVersion.ReadOnly = true;
-            this.chVersion.Width = 70;
-            // 
-            // chUrl
-            // 
-            this.chUrl.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.chUrl.HeaderText = "位置";
-            this.chUrl.Name = "chUrl";
-            this.chUrl.ReadOnly = true;
             // 
             // UDMItem
             // 
