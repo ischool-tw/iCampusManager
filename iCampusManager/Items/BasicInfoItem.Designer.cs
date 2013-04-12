@@ -169,7 +169,7 @@
             this.txtPhysicalUrl.Location = new System.Drawing.Point(65, 137);
             this.txtPhysicalUrl.Name = "txtPhysicalUrl";
             this.txtPhysicalUrl.ReadOnly = true;
-            this.txtPhysicalUrl.Size = new System.Drawing.Size(464, 25);
+            this.txtPhysicalUrl.Size = new System.Drawing.Size(472, 25);
             this.txtPhysicalUrl.TabIndex = 8;
             // 
             // BasicInfoItem

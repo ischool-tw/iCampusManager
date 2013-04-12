@@ -81,8 +81,6 @@ namespace iCampusManager
 
             if (CompleteCount >= Tasks.Count)
             {
-                MessageBox.Show("所有工作已結束。");
-
                 if (AllTaskCompleted != null)
                     AllTaskCompleted(this, EventArgs.Empty);
 

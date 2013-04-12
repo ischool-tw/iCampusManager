@@ -29,18 +29,46 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.btnDelete = new DevComponents.DotNetBar.ButtonX();
+            this.btnInstall = new DevComponents.DotNetBar.ButtonX();
             this.dgvUDS = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.chName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnInstall = new DevComponents.DotNetBar.ButtonX();
-            this.btnDelete = new DevComponents.DotNetBar.ButtonX();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUDS)).BeginInit();
             this.SuspendLayout();
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnDelete.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnDelete.Location = new System.Drawing.Point(13, 279);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnDelete.TabIndex = 2;
+            this.btnDelete.Text = "刪除";
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnInstall
+            // 
+            this.btnInstall.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnInstall.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnInstall.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnInstall.Location = new System.Drawing.Point(462, 279);
+            this.btnInstall.Name = "btnInstall";
+            this.btnInstall.Size = new System.Drawing.Size(75, 23);
+            this.btnInstall.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnInstall.TabIndex = 1;
+            this.btnInstall.Text = "安裝/更新";
+            this.btnInstall.Click += new System.EventHandler(this.btnInstall_Click);
             // 
             // dgvUDS
             // 
             this.dgvUDS.AllowUserToAddRows = false;
             this.dgvUDS.AllowUserToDeleteRows = false;
             this.dgvUDS.AllowUserToResizeRows = false;
+            this.dgvUDS.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.dgvUDS.BackgroundColor = System.Drawing.Color.White;
             this.dgvUDS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvUDS.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -61,7 +89,7 @@
             this.dgvUDS.RowHeadersWidth = 25;
             this.dgvUDS.RowTemplate.Height = 24;
             this.dgvUDS.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvUDS.Size = new System.Drawing.Size(524, 315);
+            this.dgvUDS.Size = new System.Drawing.Size(524, 265);
             this.dgvUDS.TabIndex = 0;
             this.dgvUDS.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvUDS_CellMouseDoubleClick);
             // 
@@ -72,30 +100,6 @@
             this.chName.Name = "chName";
             this.chName.ReadOnly = true;
             // 
-            // btnInstall
-            // 
-            this.btnInstall.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnInstall.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnInstall.Location = new System.Drawing.Point(462, 329);
-            this.btnInstall.Name = "btnInstall";
-            this.btnInstall.Size = new System.Drawing.Size(75, 23);
-            this.btnInstall.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnInstall.TabIndex = 1;
-            this.btnInstall.Text = "安裝/更新";
-            this.btnInstall.Click += new System.EventHandler(this.btnInstall_Click);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnDelete.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnDelete.Location = new System.Drawing.Point(13, 329);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 23);
-            this.btnDelete.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnDelete.TabIndex = 2;
-            this.btnDelete.Text = "刪除";
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
             // UDSItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -104,7 +108,7 @@
             this.Controls.Add(this.btnInstall);
             this.Controls.Add(this.dgvUDS);
             this.Name = "UDSItem";
-            this.Size = new System.Drawing.Size(550, 360);
+            this.Size = new System.Drawing.Size(550, 311);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUDS)).EndInit();
             this.ResumeLayout(false);
 

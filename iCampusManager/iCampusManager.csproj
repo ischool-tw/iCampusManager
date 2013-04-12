@@ -298,6 +298,9 @@
     <EmbeddedResource Include="Items\UDTTableDefContent.resx">
       <DependentUpon>UDTTableDefContent.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Items\WebGadgetItem.resx">
+      <DependentUpon>WebGadgetItem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MultiTaskingRunner.resx">
       <DependentUpon>MultiTaskingRunner.cs</DependentUpon>
     </EmbeddedResource>

@@ -207,5 +207,30 @@ namespace iCampusManager
 
             #endregion
         }
+
+        private void buttonItem1_Click(object sender, EventArgs e)
+        {
+            if (dgvUDM.SelectedRows.Count < 0)
+                return;
+
+            DataGridViewRow row = dgvUDM.SelectedRows[0];
+            UDMGridRow udmrow = (row.DataBoundItem as UDMGridRow);
+
+            XElement req = new XElement("Request", new XElement("ModuleName", udmrow.Name));
+
+            try
+            {
+                ConnectionHelper conn = ConnectionHelper.GetConnection(PrimaryKey);
+                conn.CallService("UDMService.UpdateModule", new Envelope(new XStringHolder(req)));
+
+                MessageBox.Show("更新完成。");
+                OnPrimaryKeyChanged(EventArgs.Empty);
+            }
+            catch (Exception ex)
+            {
+                RTOut.WriteError(ex);
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }
