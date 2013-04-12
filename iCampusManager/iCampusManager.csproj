@@ -161,6 +161,12 @@
     <Compile Include="Items\BasicInfoItem.Designer.cs">
       <DependentUpon>BasicInfoItem.cs</DependentUpon>
     </Compile>
+    <Compile Include="Items\GadgetOrderAdjustForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Items\GadgetOrderAdjustForm.Designer.cs">
+      <DependentUpon>GadgetOrderAdjustForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Items\ModuleItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -280,6 +286,9 @@
     <EmbeddedResource Include="Items\BasicInfoItem.resx">
       <DependentUpon>BasicInfoItem.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Items\GadgetOrderAdjustForm.resx">
+      <DependentUpon>GadgetOrderAdjustForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Items\NetworkItem.resx">
       <DependentUpon>NetworkItem.cs</DependentUpon>
     </EmbeddedResource>
@@ -342,6 +351,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\lamp_search_128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\atom_down_128.png" />
+    <Content Include="Resources\atom_up_128.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

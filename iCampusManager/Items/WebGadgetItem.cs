@@ -1,19 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using DevComponents.DotNetBar;
-using System.Collections;
-using System.Xml.Linq;
-using FISCA.DSA;
-using FISCA;
-using System.Xml.XPath;
 using System.Threading.Tasks;
-using FISCA.Net;
+using System.Windows.Forms;
+using System.Xml.Linq;
+using System.Xml.XPath;
+using DevComponents.DotNetBar;
+using FISCA;
+using FISCA.DSA;
 
 namespace iCampusManager
 {
@@ -23,7 +17,7 @@ namespace iCampusManager
 
         private XElement PackagesData { get; set; }
 
-        private XElement SelectedPackage { get; set; }
+        private GadgetPackageRecord SelectedPackage { get; set; }
 
         public WebGadgetItem()
         {
@@ -50,37 +44,34 @@ namespace iCampusManager
                 throw error;
             }
 
-            XElement target = PackagesData.XPathSelectElement("Package[TargetType='Guest']");
-            tabGuest.Tag = target;
+            XElement target = PackagesData.XPathSelectElement("Package[TargetType='Guest' and RefTagID='0']");
+            tabGuest.Tag = CreateGadgetPackageRecord(target);
 
-            target = PackagesData.XPathSelectElement("Package[TargetType='Teacher']");
-            tabTeacher.Tag = target;
+            target = PackagesData.XPathSelectElement("Package[TargetType='Teacher'  and RefTagID='0']");
+            tabTeacher.Tag = CreateGadgetPackageRecord(target);
 
-            target = PackagesData.XPathSelectElement("Package[TargetType='Student']");
-            tabStudent.Tag = target;
+            target = PackagesData.XPathSelectElement("Package[TargetType='Student' and RefTagID='0']");
+            tabStudent.Tag = CreateGadgetPackageRecord(target);
 
-            target = PackagesData.XPathSelectElement("Package[TargetType='Parent']");
-            tabParent.Tag = target;
+            target = PackagesData.XPathSelectElement("Package[TargetType='Parent' and RefTagID='0']");
+            tabParent.Tag = CreateGadgetPackageRecord(target);
 
-            target = PackagesData.XPathSelectElement("Package[TargetType='Administrator']");
-            tabAdmin.Tag = target;
+            target = PackagesData.XPathSelectElement("Package[TargetType='Administrator' and RefTagID='0']");
+            tabAdmin.Tag = CreateGadgetPackageRecord(target);
+
+            foreach (SuperTabItem item in tabs.Tabs)
+                item.Visible = !(item.Tag == null);
+            tabs.RecalcLayout();
 
             PuplateTabData(tabs.SelectedTab);
         }
 
-        private void PuplateTabData(SuperTabItem superTabItem)
+        private static GadgetPackageRecord CreateGadgetPackageRecord(XElement target)
         {
-            dgvGadgets.DataSource = null;
-            SelectedPackage = superTabItem.Tag as XElement;
-
-            if (SelectedPackage != null)
-            {
-                List<GadgetGridRow> rows = new List<GadgetGridRow>();
-                foreach (XElement gadget in SelectedPackage.XPathSelectElements("Definition/Package/Gadgets/Gadget"))
-                    rows.Add(new GadgetGridRow(gadget.AttributeText("deployPath")));
-
-                dgvGadgets.DataSource = new BindingList<GadgetGridRow>(rows);
-            }
+            if (target == null)
+                return null;
+            else
+                return new GadgetPackageRecord(target);
         }
 
         private void tabs_SelectedTabChanged(object sender, SuperTabStripSelectedTabChangedEventArgs e)
@@ -88,6 +79,117 @@ namespace iCampusManager
             PuplateTabData(e.NewValue as SuperTabItem);
         }
 
+        private void btnAddGadget_Click(object sender, EventArgs e)
+        {
+            InputBox box = new InputBox();
+            DialogResult dr = box.ShowDialog();
+
+            if (dr == DialogResult.OK)
+            {
+                try
+                {
+                    SelectedPackage.AddGadget(box.InputString);
+                    SaveGadget(SelectedPackage);
+                    OnPrimaryKeyChanged(EventArgs.Empty);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        private void btnDeleteGadget_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult dr = MessageBox.Show("確定要刪除選擇的小工具？", "Campus", MessageBoxButtons.YesNo);
+
+                if (dr == DialogResult.No)
+                    return;
+
+                foreach (DataGridViewRow row in dgvGadgets.SelectedRows)
+                {
+                    GadgetGridRow gg = row.DataBoundItem as GadgetGridRow;
+                    SelectedPackage.RemoveGadget(gg.DeployPath);
+                }
+
+                SaveGadget(SelectedPackage);
+                OnPrimaryKeyChanged(EventArgs.Empty);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnAdjustOrder_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                List<GadgetGridRow> rows = new List<GadgetGridRow>(dgvGadgets.DataSource as BindingList<GadgetGridRow>);
+
+                GadgetOrderAdjustForm adjust = new GadgetOrderAdjustForm(SelectedPackage, rows);
+                DialogResult dr = adjust.ShowDialog();
+
+                if (dr == DialogResult.OK)
+                {
+                    SaveGadget(SelectedPackage);
+                    OnPrimaryKeyChanged(EventArgs.Empty);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void PuplateTabData(SuperTabItem superTabItem)
+        {
+            dgvGadgets.DataSource = null;
+            SelectedPackage = superTabItem.Tag as GadgetPackageRecord;
+
+            if (SelectedPackage != null)
+            {
+                List<GadgetGridRow> rows = new List<GadgetGridRow>();
+                foreach (XElement gadget in SelectedPackage.EachGadget())
+                    rows.Add(new GadgetGridRow(gadget.AttributeText("deployPath")));
+
+                dgvGadgets.DataSource = new BindingList<GadgetGridRow>(rows);
+            }
+        }
+
+        private static XElement GetGadgetDescription(string deployPath)
+        {
+            string url = string.Format(Web2Url + "/{0}/description.xml", deployPath);
+
+            return XElement.Load(url);
+        }
+
+        private void SaveGadget(GadgetPackageRecord record)
+        {
+            try
+            {
+                ConnectionHelper ch = ConnectionHelper.GetConnection(PrimaryKey);
+
+                XElement req = new XElement("Request",
+                    new XElement("Package",
+                        new XElement("Field", record.Definition),
+                        new XElement("Condition",
+                            new XElement("Uid", record.UID))));
+
+                ch.CallService("UpdateWebPackage", new Envelope(new XStringHolder(req)));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        #region GadgetGridRow Class
+        /// <summary>
+        /// 用於 DataGridView 的 Value Object。
+        /// </summary>
         internal class GadgetGridRow : INotifyPropertyChanged
         {
             public GadgetGridRow(string deployPath)
@@ -98,13 +200,12 @@ namespace iCampusManager
 
                 Task task = Task.Factory.StartNew(() =>
                 {
-                    string url = string.Format(Web2Url + "/{0}/description.xml", DeployPath);
                     try
                     {
-                        GadgetDescription = XElement.Load(url);
+                        DeployDescription = new GadgetDeployDescription(DeployPath);
 
-                        Title = GadgetDescription.Element("ModulePrefs").AttributeText("title");
-                        Description = GadgetDescription.Element("ModulePrefs").AttributeText("description");
+                        Title = DeployDescription.Title;
+                        Description = DeployDescription.Description;
                     }
                     catch (Exception ex)
                     {
@@ -112,16 +213,6 @@ namespace iCampusManager
                         Description = ex.Message;
                     }
                 }, System.Threading.CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default);
-
-                //task.ContinueWith((x) =>
-                //{
-                //    if (GadgetDescription == null)
-                //        return;
-
-                //    Title = GadgetDescription.Element("ModulePrefs").AttributeText("title");
-                //    Description = GadgetDescription.Element("ModulePrefs").AttributeText("description");
-
-                //}, TaskScheduler.FromCurrentSynchronizationContext());
             }
 
             private string _title = string.Empty;
@@ -150,7 +241,7 @@ namespace iCampusManager
 
             public string DeployPath { get; private set; }
 
-            public XElement GadgetDescription { get; set; }
+            public GadgetDeployDescription DeployDescription { get; set; }
 
             #region INotifyPropertyChanged 成員
 
@@ -158,5 +249,103 @@ namespace iCampusManager
 
             #endregion
         }
+        #endregion
+
+        #region GadgetDeployDescription
+        /// <summary>
+        /// 代表 Gadget 在 web2 上的 description.xml 內容。
+        /// </summary>
+        internal class GadgetDeployDescription
+        {
+            public GadgetDeployDescription(string deployPath)
+            {
+                XElement descxml = GetGadgetDescription(deployPath);
+                XElement prefs = descxml.Element("ModulePrefs");
+
+                DeployPath = deployPath;
+                Title = prefs.AttributeText("title");
+                Description = prefs.AttributeText("description");
+                IconPath = prefs.ElementText("Icon");
+            }
+
+            public string DeployPath { get; private set; }
+
+            public string Title { get; private set; }
+
+            public string Description { get; private set; }
+
+            public string IconPath { get; private set; }
+        }
+        #endregion
+
+        #region GadgetPackageRecord
+        /// <summary>
+        /// 資料庫中的 Package 資料。
+        /// </summary>
+        internal class GadgetPackageRecord
+        {
+            public GadgetPackageRecord(XElement data)
+            {
+                UID = data.ElementText("Uid");
+                Definition = data.Element("Definition");
+            }
+
+            public string UID { get; set; }
+
+            public XElement Definition { get; set; }
+
+            public IEnumerable<XElement> EachGadget()
+            {
+                foreach (XElement each in Definition.XPathSelectElements("Package/Gadgets/Gadget"))
+                    yield return each;
+            }
+
+            public bool GadgetExists(string deployPath)
+            {
+                foreach (XElement each in EachGadget())
+                {
+                    string dp = each.AttributeText("deployPath");
+                    if (dp == deployPath)
+                        return true;
+                }
+                return false;
+            }
+
+            public XElement GetGadgetXml(string deployPath)
+            {
+                string xpath = string.Format("Package/Gadgets/Gadget[@deployPath='{0}']", deployPath);
+
+                return Definition.XPathSelectElement(xpath);
+            }
+
+            public void AddGadget(string deployPath)
+            {
+                GadgetDeployDescription gdd = new GadgetDeployDescription(deployPath);
+
+                string desc = string.Format("{0}({1})", gdd.Title, gdd.Description);
+
+                XElement gadget = new XElement("Gadget");
+                gadget.SetAttributeValue("deployPath", deployPath);
+                gadget.SetAttributeValue("Description", desc);
+
+                Definition.XPathSelectElement("Package/Gadgets").Add(gadget);
+            }
+
+            public void RemoveGadget(string deployPath)
+            {
+                string xpath = string.Format("Package/Gadgets/Gadget[@deployPath='{0}']", deployPath);
+                XElement gadget = Definition.XPathSelectElement(xpath);
+
+                if (gadget != null)
+                    gadget.Remove();
+            }
+
+            public void ReplaceGadgets(XElement[] gadgets)
+            {
+                XElement old = Definition.XPathSelectElement("Package/Gadgets");
+                old.ReplaceAll(gadgets);
+            }
+        }
+        #endregion
     }
 }

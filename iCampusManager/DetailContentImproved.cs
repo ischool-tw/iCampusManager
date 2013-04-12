@@ -190,16 +190,30 @@ namespace iCampusManager
             }
         }
 
+        private Dictionary<Control, bool> ControlsVisible = new Dictionary<Control, bool>();
+
         private void RemoveErrorPanel()
         {
             if (MsgPanel != null && Controls.Contains(MsgPanel))
                 Controls.Remove(MsgPanel);
 
             MsgPanel = null;
+
+            foreach (Control ctl in Controls)
+            {
+                if (ControlsVisible.ContainsKey(ctl))
+                    ctl.Visible = ControlsVisible[ctl];
+            }
         }
 
         private void ShowErrorPanel(Exception ex)
         {
+            ControlsVisible = new Dictionary<Control, bool>();
+            foreach (Control ctl in Controls)
+                ControlsVisible.Add(ctl, ctl.Visible);
+            foreach (Control ctl in Controls)
+                ctl.Visible = false;
+
             string help = "很抱歉，目前資料項目已經炸掉！訊息如下：\r\n";
             string msg = ErrorReport.Generate(ex);
             MsgPanel = new DetailContentImprovedMsg();

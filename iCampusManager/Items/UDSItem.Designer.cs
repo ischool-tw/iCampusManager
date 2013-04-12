@@ -41,7 +41,7 @@
             this.btnDelete.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnDelete.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnDelete.Location = new System.Drawing.Point(13, 279);
+            this.btnDelete.Location = new System.Drawing.Point(13, 278);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -54,7 +54,7 @@
             this.btnInstall.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnInstall.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnInstall.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnInstall.Location = new System.Drawing.Point(462, 279);
+            this.btnInstall.Location = new System.Drawing.Point(462, 278);
             this.btnInstall.Name = "btnInstall";
             this.btnInstall.Size = new System.Drawing.Size(75, 23);
             this.btnInstall.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -89,7 +89,7 @@
             this.dgvUDS.RowHeadersWidth = 25;
             this.dgvUDS.RowTemplate.Height = 24;
             this.dgvUDS.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvUDS.Size = new System.Drawing.Size(524, 265);
+            this.dgvUDS.Size = new System.Drawing.Size(524, 264);
             this.dgvUDS.TabIndex = 0;
             this.dgvUDS.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvUDS_CellMouseDoubleClick);
             // 
@@ -108,7 +108,7 @@
             this.Controls.Add(this.btnInstall);
             this.Controls.Add(this.dgvUDS);
             this.Name = "UDSItem";
-            this.Size = new System.Drawing.Size(550, 311);
+            this.Size = new System.Drawing.Size(550, 310);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUDS)).EndInit();
             this.ResumeLayout(false);
 

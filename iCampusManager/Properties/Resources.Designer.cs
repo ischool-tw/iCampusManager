@@ -73,6 +73,26 @@ namespace iCampusManager.Properties {
         /// <summary>
         ///   查詢型別 System.Drawing.Bitmap 的當地語系化資源。
         /// </summary>
+        internal static System.Drawing.Bitmap atom_down_128 {
+            get {
+                object obj = ResourceManager.GetObject("atom_down_128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢型別 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap atom_up_128 {
+            get {
+                object obj = ResourceManager.GetObject("atom_up_128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢型別 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
         internal static System.Drawing.Bitmap Import_Image {
             get {
                 object obj = ResourceManager.GetObject("Import_Image", resourceCulture);

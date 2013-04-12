@@ -40,9 +40,9 @@
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menus = new DevComponents.DotNetBar.ContextMenuBar();
             this.btnGridCtxMenu = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonItem2 = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonItem1 = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonItem3 = new DevComponents.DotNetBar.ButtonItem();
+            this.btnAddGadget = new DevComponents.DotNetBar.ButtonItem();
+            this.btnDeleteGadget = new DevComponents.DotNetBar.ButtonItem();
+            this.btnAdjustOrder = new DevComponents.DotNetBar.ButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.tabs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGadgets)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.menus)).BeginInit();
@@ -147,7 +147,7 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvGadgets.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvGadgets.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvGadgets.Dock = System.Windows.Forms.DockStyle.Top;
             this.dgvGadgets.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dgvGadgets.Location = new System.Drawing.Point(10, 36);
             this.dgvGadgets.Name = "dgvGadgets";
@@ -155,7 +155,7 @@
             this.dgvGadgets.RowHeadersWidth = 25;
             this.dgvGadgets.RowTemplate.Height = 24;
             this.dgvGadgets.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvGadgets.Size = new System.Drawing.Size(530, 284);
+            this.dgvGadgets.Size = new System.Drawing.Size(530, 264);
             this.dgvGadgets.TabIndex = 6;
             // 
             // dataGridViewTextBoxColumn9
@@ -179,7 +179,7 @@
             this.menus.AntiAlias = true;
             this.menus.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.btnGridCtxMenu});
-            this.menus.Location = new System.Drawing.Point(422, 284);
+            this.menus.Location = new System.Drawing.Point(422, 264);
             this.menus.Name = "menus";
             this.menus.Size = new System.Drawing.Size(110, 27);
             this.menus.Stretch = true;
@@ -193,26 +193,29 @@
             this.btnGridCtxMenu.AutoExpandOnClick = true;
             this.btnGridCtxMenu.Name = "btnGridCtxMenu";
             this.btnGridCtxMenu.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.buttonItem2,
-            this.buttonItem1,
-            this.buttonItem3});
+            this.btnAddGadget,
+            this.btnDeleteGadget,
+            this.btnAdjustOrder});
             this.btnGridCtxMenu.Text = "GridMenu";
             // 
-            // buttonItem2
+            // btnAddGadget
             // 
-            this.buttonItem2.Name = "buttonItem2";
-            this.buttonItem2.Text = "新增";
+            this.btnAddGadget.Name = "btnAddGadget";
+            this.btnAddGadget.Text = "新增";
+            this.btnAddGadget.Click += new System.EventHandler(this.btnAddGadget_Click);
             // 
-            // buttonItem1
+            // btnDeleteGadget
             // 
-            this.buttonItem1.Name = "buttonItem1";
-            this.buttonItem1.Text = "刪除";
+            this.btnDeleteGadget.Name = "btnDeleteGadget";
+            this.btnDeleteGadget.Text = "刪除";
+            this.btnDeleteGadget.Click += new System.EventHandler(this.btnDeleteGadget_Click);
             // 
-            // buttonItem3
+            // btnAdjustOrder
             // 
-            this.buttonItem3.BeginGroup = true;
-            this.buttonItem3.Name = "buttonItem3";
-            this.buttonItem3.Text = "調整順序";
+            this.btnAdjustOrder.BeginGroup = true;
+            this.btnAdjustOrder.Name = "btnAdjustOrder";
+            this.btnAdjustOrder.Text = "調整順序";
+            this.btnAdjustOrder.Click += new System.EventHandler(this.btnAdjustOrder_Click);
             // 
             // WebGadgetItem
             // 
@@ -222,7 +225,7 @@
             this.Controls.Add(this.dgvGadgets);
             this.Controls.Add(this.tabs);
             this.Name = "WebGadgetItem";
-            this.Size = new System.Drawing.Size(550, 325);
+            this.Size = new System.Drawing.Size(550, 310);
             ((System.ComponentModel.ISupportInitialize)(this.tabs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGadgets)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.menus)).EndInit();
@@ -243,9 +246,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private DevComponents.DotNetBar.ContextMenuBar menus;
         private DevComponents.DotNetBar.ButtonItem btnGridCtxMenu;
-        private DevComponents.DotNetBar.ButtonItem buttonItem2;
-        private DevComponents.DotNetBar.ButtonItem buttonItem1;
-        private DevComponents.DotNetBar.ButtonItem buttonItem3;
+        private DevComponents.DotNetBar.ButtonItem btnAddGadget;
+        private DevComponents.DotNetBar.ButtonItem btnDeleteGadget;
+        private DevComponents.DotNetBar.ButtonItem btnAdjustOrder;
 
     }
 }
