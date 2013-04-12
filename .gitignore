@@ -1,3 +1,4 @@
 *.cache
 /iCampusManager/obj
 /iCampusManager/bin
+/iCampusManager/iCampusManager.csproj.user

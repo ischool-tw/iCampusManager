@@ -161,6 +161,8 @@ namespace iCampusManager
 
                 PrimaryKeyTask.ContinueWith(x =>
                 {
+                    Exception ex = x.Exception;//防止 .Net 內部以為沒處理 Exception。
+
                     PrimaryKeyTask = null;
                     if (PrimaryKeyPadding)
                     {
