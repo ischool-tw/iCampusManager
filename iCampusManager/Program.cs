@@ -189,5 +189,14 @@ namespace iCampusManager
 
             return string.Format("ischool 中央管理系統〈FISCA：{0}〉〈{1}〉", version, user);
         }
+
+        internal static string TrimModuleServerUrl(string urlPart)
+        {
+            string part = urlPart.Replace("https://module.ischool.com.tw/module", "~");
+            part = part.Replace("http://module.ischool.com.tw/module", "~");
+            part = part.Replace("http://module.ischool.com.tw:8080/module", "~");
+            part = part.Replace("https://module.ischool.com.tw:8080/module", "~");
+            return part;
+        }
     }
 }

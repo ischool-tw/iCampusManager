@@ -174,11 +174,7 @@ namespace iCampusManager
                 Provider = data.ElementText("Provider");
                 Version = data.ElementText("Version");
 
-                string urlPart = data.ElementText("URL").Replace("https://module.ischool.com.tw/module", "~");
-                urlPart = urlPart.Replace("http://module.ischool.com.tw/module", "~");
-                urlPart = urlPart.Replace("http://module.ischool.com.tw:8080/module", "~");
-                urlPart = urlPart.Replace("https://module.ischool.com.tw:8080/module", "~");
-                Url = urlPart;
+                Url = Program.TrimModuleServerUrl(data.ElementText("URL"));
             }
 
             public string Name { get; private set; }

@@ -292,6 +292,9 @@
     <EmbeddedResource Include="Items\GadgetOrderAdjustForm.resx">
       <DependentUpon>GadgetOrderAdjustForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Items\ModuleItem.resx">
+      <DependentUpon>ModuleItem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Items\NetworkItem.resx">
       <DependentUpon>NetworkItem.cs</DependentUpon>
     </EmbeddedResource>
