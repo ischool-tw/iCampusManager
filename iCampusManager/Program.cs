@@ -48,11 +48,10 @@ namespace iCampusManager
             InitConfigurationStorage();
             InitMainPanel();
 
-            new ImportSchool();//匯入學校資料
             new FieldManager();
-            new SearchSchool();
             new DetailItems();
             new RibbonButtons();
+            new ImportExport();//匯入學校資料
 
             RefreshFilteredSource();
 

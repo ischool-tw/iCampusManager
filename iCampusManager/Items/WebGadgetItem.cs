@@ -186,6 +186,16 @@ namespace iCampusManager
             }
         }
 
+        private void dgvGadgets_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex < 0)
+                return;
+
+            DataGridViewRow row = dgvGadgets.Rows[e.RowIndex];
+            GadgetGridRow grow = row.DataBoundItem as GadgetGridRow;
+            MessageBox.Show(grow.DeployPath);
+        }
+
         #region GadgetGridRow Class
         /// <summary>
         /// 用於 DataGridView 的 Value Object。

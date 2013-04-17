@@ -10,15 +10,23 @@ using FISCA.UDT;
 
 namespace iCampusManager
 {
-    internal class ImportSchool
+    internal class ImportExport
     {
-        public ImportSchool()
+        public ImportExport()
         {
-            Program.MainPanel.RibbonBarItems["管理"]["匯入"].Image = Properties.Resources.Import_Image;
-            Program.MainPanel.RibbonBarItems["管理"]["匯入"].Size = FISCA.Presentation.RibbonBarButton.MenuButtonSize.Large;
-            Program.MainPanel.RibbonBarItems["管理"]["匯入"].Click += delegate
+            Program.MainPanel.RibbonBarItems["匯入/匯出"]["匯入"].Image = Properties.Resources.Import_Image;
+            Program.MainPanel.RibbonBarItems["匯入/匯出"]["匯入"].Size = FISCA.Presentation.RibbonBarButton.MenuButtonSize.Large;
+            Program.MainPanel.RibbonBarItems["匯入/匯出"]["匯入"].Click += delegate
             {
                 ReadSchoolRecords();
+            };
+
+            RibbonBarButton mb = Program.MainPanel.RibbonBarItems["匯入/匯出"]["匯出"];
+            mb.Image = Properties.Resources.Export_Image;
+            mb.Size = FISCA.Presentation.RibbonBarButton.MenuButtonSize.Large;
+            mb.Click += delegate
+            {
+                MessageBox.Show("製作中!");
             };
         }
 

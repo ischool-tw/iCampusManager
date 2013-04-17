@@ -42,7 +42,7 @@ namespace iCampusManager
 
         protected override void GenerateTreeStruct(KeyCatalog root)
         {
-            string cmd = "select uid,\"group\" from $school where uid in(@PrimaryKeys)";
+            string cmd = "select uid,\"group\" from $school where uid in(@PrimaryKeys) order by \"group\"";
 
             StringBuilder primarykeys = new StringBuilder();
             primarykeys.AppendFormat("{0}", "-1"); //如果沒有資料也不會爆掉。

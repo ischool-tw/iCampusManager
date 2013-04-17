@@ -19,6 +19,8 @@ namespace iCampusManager
 
         private string TargetDSNS { get; set; }
 
+        private object SyncRoot = new object();
+
         static ConnectionHelper()
         {
             Helpers = new Dictionary<string, ConnectionHelper>();
@@ -28,7 +30,6 @@ namespace iCampusManager
         {
             DynamicCache dc = Program.GlobalSchoolCache;
             TargetDSNS = dc[uid].DSNS;
-            DoConnect();
         }
 
         private void DoConnect()
@@ -43,6 +44,12 @@ namespace iCampusManager
         {
             try
             {
+                lock (SyncRoot)
+                {
+                    if (InternalConnection == null)
+                        DoConnect();
+                }
+
                 return InternalConnection.SendRequest(srvName, req);
             }
             catch (DSAServerException ex)
@@ -60,8 +67,6 @@ namespace iCampusManager
         [MethodImpl(MethodImplOptions.Synchronized)]
         public static ConnectionHelper GetConnection(string uid)
         {
-            DynamicCache dc = Program.GlobalSchoolCache;
-
             if (!Helpers.ContainsKey(uid))
             {
                 ConnectionHelper ch = new ConnectionHelper(uid);
@@ -69,6 +74,12 @@ namespace iCampusManager
             }
 
             return Helpers[uid];
+        }
+
+        public static void ResetConnection(string uid)
+        {
+            if (Helpers.ContainsKey(uid))
+                Helpers.Remove(uid);
         }
 
         class InternalToken : SecurityToken

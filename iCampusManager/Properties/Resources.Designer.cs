@@ -73,6 +73,26 @@ namespace iCampusManager.Properties {
         /// <summary>
         ///   查詢型別 System.Drawing.Bitmap 的當地語系化資源。
         /// </summary>
+        internal static System.Drawing.Bitmap atom_add_128 {
+            get {
+                object obj = ResourceManager.GetObject("atom_add_128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢型別 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap atom_close_128 {
+            get {
+                object obj = ResourceManager.GetObject("atom_close_128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢型別 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
         internal static System.Drawing.Bitmap atom_down_128 {
             get {
                 object obj = ResourceManager.GetObject("atom_down_128", resourceCulture);
@@ -86,6 +106,16 @@ namespace iCampusManager.Properties {
         internal static System.Drawing.Bitmap atom_up_128 {
             get {
                 object obj = ResourceManager.GetObject("atom_up_128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢型別 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap Export_Image {
+            get {
+                object obj = ResourceManager.GetObject("Export_Image", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

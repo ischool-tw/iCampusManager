@@ -8,6 +8,8 @@ using System.Text;
 using System.Windows.Forms;
 using FISCA.UDT;
 using FISCA.DSA;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace iCampusManager
 {
@@ -41,6 +43,7 @@ namespace iCampusManager
                 SchoolData.Comment = txtComment.Text;
                 SchoolData.Save();
                 Program.RefreshFilteredSource();
+                ConnectionHelper.ResetConnection(PrimaryKey);
             }
             ResetDirtyStatus();
         }
@@ -54,8 +57,6 @@ namespace iCampusManager
                 SchoolData = schools[0];
             else
                 SchoolData = null;
-
-            ResolveUrl();
         }
 
         private void ResolveUrl()
@@ -78,7 +79,18 @@ namespace iCampusManager
                 txtDSNS.Text = SchoolData.DSNS;
                 txtGroup.Text = SchoolData.Group;
                 txtComment.Text = SchoolData.Comment;
-                txtPhysicalUrl.Text = PhysicalUrl;
+                txtPhysicalUrl.Text = "解析中...";
+
+                Task task = Task.Factory.StartNew(() =>
+                {
+                    ResolveUrl();
+                }, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default);
+
+                task.ContinueWith(x =>
+                {
+                    txtPhysicalUrl.Text = PhysicalUrl;
+                }, TaskScheduler.FromCurrentSynchronizationContext());
+
                 ResetDirtyStatus();
             }
             else
