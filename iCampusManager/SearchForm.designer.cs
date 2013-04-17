@@ -106,7 +106,7 @@
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(311, 21);
             this.labelX1.TabIndex = 1;
-            this.labelX1.Text = "※ 搜尋後的結果會加入代處理(只會搜尋選擇的學校)";
+            this.labelX1.Text = "※ 搜尋後的結果會加入待處理(只會搜尋選擇的學校)";
             // 
             // SearchForm
             // 
