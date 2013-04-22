@@ -9,6 +9,7 @@ using DevComponents.AdvTree;
 using FISCA.Data;
 using FISCA.Presentation;
 using System.Diagnostics;
+using FISCA;
 
 namespace iCampusManager
 {
@@ -117,6 +118,9 @@ namespace iCampusManager
 
             task.ContinueWith(x =>
             {
+                if (x.Exception != null)
+                    ErrorBox.Show(x.Exception.Message, x.Exception);
+
                 ATree.Nodes.Clear();
 
                 KeyCatalog rkc = x.AsyncState as KeyCatalog;
