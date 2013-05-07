@@ -30,12 +30,12 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.contextMenuBar1 = new DevComponents.DotNetBar.ContextMenuBar();
+            this.Menu = new DevComponents.DotNetBar.ButtonItem();
+            this.buttonItem1 = new DevComponents.DotNetBar.ButtonItem();
             this.dgvUDM = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.chName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.chVersion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.chUrl = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Menu = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonItem1 = new DevComponents.DotNetBar.ButtonItem();
             this.btnCheckUpdate = new DevComponents.DotNetBar.ButtonX();
             this.btnDelete = new DevComponents.DotNetBar.ButtonX();
             this.btnInstall = new DevComponents.DotNetBar.ButtonX();
@@ -56,6 +56,20 @@
             this.contextMenuBar1.TabIndex = 6;
             this.contextMenuBar1.TabStop = false;
             this.contextMenuBar1.Text = "contextMenuBar1";
+            // 
+            // Menu
+            // 
+            this.Menu.AutoExpandOnClick = true;
+            this.Menu.Name = "Menu";
+            this.Menu.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.buttonItem1});
+            this.Menu.Text = "UDM";
+            // 
+            // buttonItem1
+            // 
+            this.buttonItem1.Name = "buttonItem1";
+            this.buttonItem1.Text = "更新";
+            this.buttonItem1.Click += new System.EventHandler(this.buttonItem1_Click);
             // 
             // dgvUDM
             // 
@@ -89,7 +103,7 @@
             this.dgvUDM.RowHeadersWidth = 25;
             this.dgvUDM.RowTemplate.Height = 24;
             this.dgvUDM.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvUDM.Size = new System.Drawing.Size(524, 265);
+            this.dgvUDM.Size = new System.Drawing.Size(524, 264);
             this.dgvUDM.TabIndex = 3;
             this.dgvUDM.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvUDM_CellMouseDoubleClick);
             // 
@@ -117,26 +131,12 @@
             this.chUrl.Name = "chUrl";
             this.chUrl.ReadOnly = true;
             // 
-            // Menu
-            // 
-            this.Menu.AutoExpandOnClick = true;
-            this.Menu.Name = "Menu";
-            this.Menu.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.buttonItem1});
-            this.Menu.Text = "UDM";
-            // 
-            // buttonItem1
-            // 
-            this.buttonItem1.Name = "buttonItem1";
-            this.buttonItem1.Text = "更新";
-            this.buttonItem1.Click += new System.EventHandler(this.buttonItem1_Click);
-            // 
             // btnCheckUpdate
             // 
             this.btnCheckUpdate.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnCheckUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnCheckUpdate.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnCheckUpdate.Location = new System.Drawing.Point(381, 279);
+            this.btnCheckUpdate.Location = new System.Drawing.Point(381, 278);
             this.btnCheckUpdate.Name = "btnCheckUpdate";
             this.btnCheckUpdate.Size = new System.Drawing.Size(75, 23);
             this.btnCheckUpdate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -149,7 +149,7 @@
             this.btnDelete.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnDelete.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnDelete.Location = new System.Drawing.Point(13, 279);
+            this.btnDelete.Location = new System.Drawing.Point(13, 278);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -162,7 +162,7 @@
             this.btnInstall.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnInstall.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnInstall.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnInstall.Location = new System.Drawing.Point(462, 279);
+            this.btnInstall.Location = new System.Drawing.Point(462, 278);
             this.btnInstall.Name = "btnInstall";
             this.btnInstall.Size = new System.Drawing.Size(75, 23);
             this.btnInstall.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -180,7 +180,7 @@
             this.Controls.Add(this.btnInstall);
             this.Controls.Add(this.dgvUDM);
             this.Name = "UDMItem";
-            this.Size = new System.Drawing.Size(550, 311);
+            this.Size = new System.Drawing.Size(550, 310);
             ((System.ComponentModel.ISupportInitialize)(this.contextMenuBar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUDM)).EndInit();
             this.ResumeLayout(false);

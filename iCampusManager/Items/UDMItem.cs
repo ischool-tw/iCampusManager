@@ -66,7 +66,7 @@ namespace iCampusManager
                 XElement req = new XElement("Request", new XElement("URL", url));
 
                 ConnectionHelper conn = ConnectionHelper.GetConnection(PrimaryKey);
-                conn.CallService("UDMService.RegistryModule", new Envelope(new XStringHolder(req)));
+                conn.CallService("UDMService.ForceRegistry", new Envelope(new XStringHolder(req)));
 
                 MessageBox.Show("註冊 UDM 完成。");
                 OnPrimaryKeyChanged(EventArgs.Empty);
