@@ -167,6 +167,9 @@ namespace iCampusManager
             //設定 ASPOSE 元件的 License。
             System.IO.Stream stream = new System.IO.MemoryStream(Properties.Resources.Aspose_Total);
             new Aspose.Cells.License().SetLicense(stream);
+
+            stream.Seek(0, SeekOrigin.Begin);
+            new Aspose.Chart.License().SetLicense(stream);
         }
 
         /// <summary>

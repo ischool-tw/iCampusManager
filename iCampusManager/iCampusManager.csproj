@@ -59,6 +59,9 @@
       <HintPath>D:\TFS2008\Research\Yaoming\UDMManager\lib\Aspose.Cells.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Aspose.Chart">
+      <HintPath>..\..\..\..\..\Program Files (x86)\Aspose\Aspose.Chart\Bin\net2.0\Aspose.Chart.dll</HintPath>
+    </Reference>
     <Reference Include="Campus">
       <HintPath>..\..\..\Desktop\FiscaRuntime\modules\Campus\Campus.dll</HintPath>
       <Private>False</Private>
