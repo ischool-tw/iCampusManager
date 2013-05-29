@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Xml.Linq;
 using FISCA.DSA;
 using FISCA;
+using DesktopLib;
 
 namespace iCampusManager
 {
@@ -227,6 +228,11 @@ namespace iCampusManager
                 RTOut.WriteError(ex);
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void UDMItem_Load(object sender, EventArgs e)
+        {
+            InitDetailContent();
         }
     }
 }

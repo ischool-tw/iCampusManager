@@ -1,4 +1,5 @@
-﻿namespace iCampusManager
+﻿using DesktopLib;
+namespace iCampusManager
 {
     partial class UDTTableDefContent
     {
@@ -29,8 +30,8 @@
         private void InitializeComponent()
         {
             ActiproSoftware.SyntaxEditor.Document document1 = new ActiproSoftware.SyntaxEditor.Document();
-            this.xmlLanguage = new iCampusManager.BaseXmlSyntaxLanguage();
-            this.editor = new iCampusManager.BaseSyntaxEditor();
+            this.xmlLanguage = new BaseXmlSyntaxLanguage();
+            this.editor = new BaseSyntaxEditor();
             this.SuspendLayout();
             // 
             // editor

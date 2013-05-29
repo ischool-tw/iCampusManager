@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using DesktopLib;
 using DevComponents.AdvTree;
 using FISCA.Presentation;
 
@@ -65,6 +66,11 @@ namespace iCampusManager
 
                 root[group].AddKey(id);
             }
+        }
+
+        protected override void RefreshAllClicked()
+        {
+            Program.RefreshFilteredSource();
         }
     }
 }

@@ -188,6 +188,7 @@
             this.Controls.Add(this.label1);
             this.Name = "BasicInfoItem";
             this.Size = new System.Drawing.Size(550, 185);
+            this.Load += new System.EventHandler(this.BasicInfoItem_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

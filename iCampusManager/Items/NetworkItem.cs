@@ -11,6 +11,7 @@ using FISCA.DSA;
 using FISCA;
 using System.Xml.Linq;
 using FISCA.UDT;
+using DesktopLib;
 
 namespace iCampusManager
 {
@@ -157,7 +158,7 @@ namespace iCampusManager
 
         private void NetworkItem_Load(object sender, EventArgs e)
         {
-
+            InitDetailContent();
         }
 
         private XElement Query(string cmd)

@@ -1,4 +1,5 @@
-﻿using iCampusManager;
+﻿using DesktopLib;
+using iCampusManager;
 
 namespace iCampusManager
 {
@@ -31,8 +32,8 @@ namespace iCampusManager
         private void InitializeComponent()
         {
             ActiproSoftware.SyntaxEditor.Document document1 = new ActiproSoftware.SyntaxEditor.Document();
-            this.xmlLanguage = new iCampusManager.BaseXmlSyntaxLanguage();
-            this.editor = new iCampusManager.BaseSyntaxEditor();
+            this.xmlLanguage = new BaseXmlSyntaxLanguage();
+            this.editor = new BaseSyntaxEditor();
             this.SuspendLayout();
             // 
             // editor

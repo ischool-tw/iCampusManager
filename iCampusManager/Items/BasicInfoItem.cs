@@ -10,6 +10,7 @@ using FISCA.UDT;
 using FISCA.DSA;
 using System.Threading.Tasks;
 using System.Threading;
+using DesktopLib;
 
 namespace iCampusManager
 {
@@ -95,6 +96,11 @@ namespace iCampusManager
             }
             else
                 throw new Exception("無查資料：" + PrimaryKey);
+        }
+
+        private void BasicInfoItem_Load(object sender, EventArgs e)
+        {
+            InitDetailContent();
         }
     }
 }

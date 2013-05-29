@@ -40,7 +40,7 @@
             this.btnInstall.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnInstall.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnInstall.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnInstall.Location = new System.Drawing.Point(462, 279);
+            this.btnInstall.Location = new System.Drawing.Point(462, 278);
             this.btnInstall.Name = "btnInstall";
             this.btnInstall.Size = new System.Drawing.Size(75, 23);
             this.btnInstall.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -75,7 +75,7 @@
             this.dgvUDT.RowHeadersWidth = 25;
             this.dgvUDT.RowTemplate.Height = 24;
             this.dgvUDT.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvUDT.Size = new System.Drawing.Size(524, 265);
+            this.dgvUDT.Size = new System.Drawing.Size(524, 264);
             this.dgvUDT.TabIndex = 3;
             this.dgvUDT.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvUDT_CellMouseDoubleClick);
             // 
@@ -93,7 +93,8 @@
             this.Controls.Add(this.btnInstall);
             this.Controls.Add(this.dgvUDT);
             this.Name = "UDTItem";
-            this.Size = new System.Drawing.Size(550, 311);
+            this.Size = new System.Drawing.Size(550, 310);
+            this.Load += new System.EventHandler(this.UDTItem_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUDT)).EndInit();
             this.ResumeLayout(false);
 

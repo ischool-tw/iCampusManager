@@ -10,6 +10,7 @@ using System.Xml.Linq;
 using FISCA.DSA;
 using FISCA;
 using System.Xml.XPath;
+using DesktopLib;
 
 namespace iCampusManager
 {
@@ -105,6 +106,11 @@ namespace iCampusManager
             udtcontent.SetTableName(name);
             udtcontent.SetUID(PrimaryKey);
             udtcontent.ShowDialog();
+        }
+
+        private void UDTItem_Load(object sender, EventArgs e)
+        {
+            InitDetailContent();
         }
     }
 }

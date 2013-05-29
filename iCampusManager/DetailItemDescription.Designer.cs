@@ -44,7 +44,7 @@
             this.lblName.Location = new System.Drawing.Point(0, 0);
             this.lblName.Name = "lblName";
             this.lblName.PaddingLeft = 8;
-            this.lblName.Size = new System.Drawing.Size(76, 26);
+            this.lblName.Size = new System.Drawing.Size(79, 26);
             this.lblName.TabIndex = 0;
             this.lblName.Text = "Content";
             // 

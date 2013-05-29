@@ -227,6 +227,7 @@
             this.Controls.Add(this.tabs);
             this.Name = "WebGadgetItem";
             this.Size = new System.Drawing.Size(550, 310);
+            this.Load += new System.EventHandler(this.WebGadgetItem_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tabs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGadgets)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.menus)).EndInit();

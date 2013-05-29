@@ -11,6 +11,7 @@ using Campus;
 using FISCA.DSA;
 using FISCA;
 using System.Xml.XPath;
+using DesktopLib;
 
 namespace iCampusManager
 {
@@ -140,6 +141,11 @@ namespace iCampusManager
             udscontent.Text = name;
             udscontent.SetXmlContent(contract.ToString());
             udscontent.ShowDialog();
+        }
+
+        private void UDSItem_Load(object sender, EventArgs e)
+        {
+            InitDetailContent();
         }
     }
 }

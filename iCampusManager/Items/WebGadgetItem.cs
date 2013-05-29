@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using System.Xml.XPath;
+using DesktopLib;
 using DevComponents.DotNetBar;
 using FISCA;
 using FISCA.DSA;
@@ -357,5 +358,10 @@ namespace iCampusManager
             }
         }
         #endregion
+
+        private void WebGadgetItem_Load(object sender, EventArgs e)
+        {
+            InitDetailContent();
+        }
     }
 }

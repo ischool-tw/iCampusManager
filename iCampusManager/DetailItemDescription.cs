@@ -19,9 +19,9 @@ namespace iCampusManager
 
         protected override void OnPrimaryKeyChanged(EventArgs e)
         {
-            dynamic school=Program.GlobalSchoolCache[PrimaryKey];
+            dynamic school = Program.GlobalSchoolCache[PrimaryKey];
 
-            lblName.Text = string.Format("{0} ({1})",(string)school.Title,(string)school.DSNS);
+            lblName.Text = string.Format("{0} ({1})", (string)school.Title, (string)school.DSNS);
         }
     }
 }

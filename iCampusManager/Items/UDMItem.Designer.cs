@@ -181,6 +181,7 @@
             this.Controls.Add(this.dgvUDM);
             this.Name = "UDMItem";
             this.Size = new System.Drawing.Size(550, 310);
+            this.Load += new System.EventHandler(this.UDMItem_Load);
             ((System.ComponentModel.ISupportInitialize)(this.contextMenuBar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUDM)).EndInit();
             this.ResumeLayout(false);

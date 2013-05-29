@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using FISCA.Deployment;
 using System.Threading;
 using System.Windows.Forms;
+using DesktopLib;
 
 namespace iCampusManager
 {
@@ -164,6 +165,11 @@ namespace iCampusManager
             public event PropertyChangedEventHandler PropertyChanged;
 
             #endregion
+        }
+
+        private void ModuleItem_Load(object sender, EventArgs e)
+        {
+            InitDetailContent();
         }
     }
 }

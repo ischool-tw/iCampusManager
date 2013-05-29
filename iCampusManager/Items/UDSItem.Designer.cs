@@ -109,6 +109,7 @@
             this.Controls.Add(this.dgvUDS);
             this.Name = "UDSItem";
             this.Size = new System.Drawing.Size(550, 310);
+            this.Load += new System.EventHandler(this.UDSItem_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUDS)).EndInit();
             this.ResumeLayout(false);
 

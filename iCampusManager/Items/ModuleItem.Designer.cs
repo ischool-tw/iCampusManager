@@ -120,6 +120,7 @@
             this.Controls.Add(this.dgvPlugin);
             this.Name = "ModuleItem";
             this.Size = new System.Drawing.Size(550, 310);
+            this.Load += new System.EventHandler(this.ModuleItem_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlugin)).EndInit();
             this.ResumeLayout(false);
 
