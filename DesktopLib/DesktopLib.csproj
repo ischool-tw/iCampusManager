@@ -54,8 +54,20 @@
       <HintPath>..\..\..\Desktop\FiscaRuntime\kernel\FISCA.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="FISCA.Authentication">
+      <HintPath>..\..\..\Desktop\FiscaRuntime\kernel\FISCA.Authentication.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="FISCA.Data">
       <HintPath>..\..\..\Desktop\FiscaRuntime\kernel\FISCA.Data.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="FISCA.DSAClient">
+      <HintPath>..\..\..\Desktop\FiscaRuntime\kernel\FISCA.DSAClient.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="FISCA.DSAUtil">
+      <HintPath>..\..\..\Desktop\FiscaRuntime\kernel\FISCA.DSAUtil.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="FISCA.Permission">
@@ -77,6 +89,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CacheManager.cs" />
     <Compile Include="ChangeListener\ChangeEventArgs.cs" />
     <Compile Include="ChangeListener\ChangeListen.cs" />
     <Compile Include="ChangeListener\ChangeSource.cs" />
@@ -88,6 +101,20 @@
     <Compile Include="ChangeListener\NumericUpDownSource.cs" />
     <Compile Include="ChangeListener\RadioButtonSource.cs" />
     <Compile Include="ChangeListener\TextBoxSource.cs" />
+    <Compile Include="Configuration\AutoDictionary.cs" />
+    <Compile Include="Configuration\Behavior_Extends.cs" />
+    <Compile Include="Configuration\Config.cs" />
+    <Compile Include="Configuration\ConfigData.cs" />
+    <Compile Include="Configuration\ConfigProvider_App.cs" />
+    <Compile Include="Configuration\ConfigProvider_Global.cs" />
+    <Compile Include="Configuration\ConfigProvider_User.cs" />
+    <Compile Include="Configuration\ConfigurationCache.cs" />
+    <Compile Include="Configuration\ConfigurationManager.cs" />
+    <Compile Include="Configuration\ConfigurationRecord.cs" />
+    <Compile Include="Configuration\Configuration_ExtendMethods.cs" />
+    <Compile Include="Configuration\IConfigurationProvider.cs" />
+    <Compile Include="Configuration\Typed_Extends.cs" />
+    <Compile Include="Configuration\UserConfigManager.cs" />
     <Compile Include="CustomStringComparer.cs" />
     <Compile Include="DetailContentImproved.cs">
       <SubType>UserControl</SubType>
@@ -119,6 +146,10 @@
     <Compile Include="MultiTaskingRunner.designer.cs">
       <DependentUpon>MultiTaskingRunner.cs</DependentUpon>
     </Compile>
+    <Compile Include="MultiThreadBackgroundWorker.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MultiThreadWorker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StringUtil.cs" />
     <Compile Include="TextEditor\BaseSyntaxEditor.cs">

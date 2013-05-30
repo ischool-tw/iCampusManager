@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Xml.Linq;
-using Campus;
 using FISCA.DSA;
 using FISCA;
 using System.Xml.XPath;
