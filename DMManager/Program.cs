@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DMManager
 {
-    public class Class1
+    public class Program
     {
     }
 }

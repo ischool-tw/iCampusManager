@@ -1,5 +1,5 @@
 C:\Users\Yaoming\git\iCampusManager\DMManager\bin\Debug\DMManager.dll
 C:\Users\Yaoming\git\iCampusManager\DMManager\bin\Debug\DMManager.pdb
-C:\Users\Yaoming\git\iCampusManager\DMManager\obj\Debug\DMManager.csprojResolveAssemblyReference.cache
 C:\Users\Yaoming\git\iCampusManager\DMManager\obj\Debug\DMManager.dll
 C:\Users\Yaoming\git\iCampusManager\DMManager\obj\Debug\DMManager.pdb
+C:\Users\Yaoming\git\iCampusManager\DMManager\obj\Debug\DMManager.csprojResolveAssemblyReference.cache
