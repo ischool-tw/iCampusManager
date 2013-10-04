@@ -47,10 +47,17 @@ namespace iCampusManager
             InitConfigurationStorage();
             InitMainPanel();
 
+            MainPanel.ListPaneContexMenu["執行 SQL 並匯出"].Click += delegate
+            {
+                new ExportQueryData().Export();
+            };
+
             new FieldManager();
             new DetailItems();
             new RibbonButtons();
             new ImportExport();//匯入學校資料
+
+
 
             RefreshFilteredSource();
 

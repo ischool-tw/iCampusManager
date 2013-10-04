@@ -17,6 +17,7 @@ namespace iCampusManager
             Program.MainPanel.RegisterDetailContent<UDSItem>();
             Program.MainPanel.RegisterDetailContent<ModuleItem>();
             Program.MainPanel.RegisterDetailContent<WebGadgetItem>();
+            Program.MainPanel.RegisterDetailContent<StudentExchangeReset>();
         }
     }
 }
