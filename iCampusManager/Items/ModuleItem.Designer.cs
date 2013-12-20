@@ -94,6 +94,7 @@
             this.dgvPlugin.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPlugin.Size = new System.Drawing.Size(524, 264);
             this.dgvPlugin.TabIndex = 3;
+            this.dgvPlugin.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlugin_CellContentDoubleClick);
             // 
             // chName
             // 

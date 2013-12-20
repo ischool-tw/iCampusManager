@@ -171,5 +171,20 @@ namespace iCampusManager
         {
             InitDetailContent();
         }
+
+        private void dgvPlugin_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0)
+                return;
+
+            DataGridViewRow row = dgvPlugin.Rows[e.RowIndex];
+
+            string xml = (row.DataBoundItem as PluginGridRow).Manifest.ToXml().ToString();
+
+            SimpleDefContent udscontent = new SimpleDefContent();
+            udscontent.Text = (row.DataBoundItem as PluginGridRow).Url;
+            udscontent.SetXmlContent(xml);
+            udscontent.ShowDialog();
+        }
     }
 }
