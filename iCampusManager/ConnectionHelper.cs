@@ -30,6 +30,7 @@ namespace iCampusManager
         {
             DynamicCache dc = Program.GlobalSchoolCache;
             TargetDSNS = dc[uid].DSNS;
+            UID = uid;
         }
 
         private void DoConnect()
@@ -39,6 +40,11 @@ namespace iCampusManager
             InternalConnection = new Connection();
             InternalConnection.Connect(AccessPoint.Parse(TargetDSNS), "SystemMaintenance", it);
         }
+
+        /// <summary>
+        /// 所對應的學校之 UID。
+        /// </summary>
+        public string UID { get; private set; }
 
         public Envelope CallService(string srvName, Envelope req)
         {

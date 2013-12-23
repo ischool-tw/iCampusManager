@@ -122,6 +122,12 @@
     <Compile Include="DefaultView.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="DesktopModuleManagerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DesktopModuleManagerForm.Designer.cs">
+      <DependentUpon>DesktopModuleManagerForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DetailItemDescription.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -222,6 +228,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DefaultView.resx">
       <DependentUpon>DefaultView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesktopModuleManagerForm.resx">
+      <DependentUpon>DesktopModuleManagerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DetailItemDescription.resx">
       <DependentUpon>DetailItemDescription.cs</DependentUpon>
