@@ -23,5 +23,10 @@ namespace iCampusManager
         }
 
         public string SQLText { get; set; }
+
+        private void SQLForm_Load(object sender, EventArgs e)
+        {
+            txtSQL.MaxLength = 400000000;
+        }
     }
 }

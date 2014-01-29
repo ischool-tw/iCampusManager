@@ -32,15 +32,15 @@
             this.btnConfirm = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // textBox1
+            // txtSQL
             // 
             this.txtSQL.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSQL.Location = new System.Drawing.Point(14, 14);
-            this.txtSQL.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.txtSQL.Margin = new System.Windows.Forms.Padding(5);
             this.txtSQL.Multiline = true;
-            this.txtSQL.Name = "textBox1";
+            this.txtSQL.Name = "txtSQL";
             this.txtSQL.Size = new System.Drawing.Size(695, 433);
             this.txtSQL.TabIndex = 0;
             this.txtSQL.WordWrap = false;
@@ -64,9 +64,10 @@
             this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.txtSQL);
             this.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "SQLForm";
             this.Text = "SQLForm";
+            this.Load += new System.EventHandler(this.SQLForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
