@@ -50,6 +50,16 @@ namespace iCampusManager
             {
                 new DesktopModuleManagerForm().ShowDialog();
             };
+
+            Program.MainPanel.SelectedSourceChanged += delegate
+            {
+                Program.MainPanel.RibbonBarItems["總務"]["單筆查詢"].Enable = Program.MainPanel.SelectedSource.Count > 0;
+            };
+            Program.MainPanel.RibbonBarItems["總務"]["單筆查詢"].Size = RibbonBarButton.MenuButtonSize.Medium;
+            Program.MainPanel.RibbonBarItems["總務"]["單筆查詢"].Click += delegate
+            {
+                new VirtualAccountFound.VAFinder().ShowDialog();
+            };
         }
     }
 }
