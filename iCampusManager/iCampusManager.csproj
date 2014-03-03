@@ -122,6 +122,14 @@
     <Compile Include="DefaultView.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="PropertyComparer.cs" />
+    <Compile Include="SortableBindingList.cs" />
+    <Compile Include="UDMManagerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UDMManagerForm.Designer.cs">
+      <DependentUpon>UDMManagerForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DesktopModuleManagerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -290,6 +298,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SQLForm.resx">
       <DependentUpon>SQLForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UDMManagerForm.resx">
+      <DependentUpon>UDMManagerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VAFinder.resx">
       <DependentUpon>VAFinder.cs</DependentUpon>

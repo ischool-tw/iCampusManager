@@ -50,6 +50,10 @@ namespace iCampusManager
             {
                 new DesktopModuleManagerForm().ShowDialog();
             };
+            Program.MainPanel.RibbonBarItems["進階"]["批次"]["UDM 管理"].Click += delegate
+            {
+                new UDMManagerForm().ShowDialog();
+            };
 
             Program.MainPanel.SelectedSourceChanged += delegate
             {
