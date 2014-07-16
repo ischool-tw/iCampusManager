@@ -24,7 +24,6 @@ namespace iCampusManager
             {
                 School s = new School();
                 s.Title = txtTitle.Text;
-                s.DSNS = txtDSNS.Text;
                 s.Group = cboGroup.Text;
                 s.Save();
             }

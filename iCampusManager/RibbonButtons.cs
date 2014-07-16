@@ -37,33 +37,6 @@ namespace iCampusManager
                     Program.RefreshFilteredSource();
                 }
             };
-
-            //Program.MainPanel.RibbonBarItems["進階"]["搜尋"].Image = Properties.Resources.lamp_search_128;
-            Program.MainPanel.RibbonBarItems["進階"]["搜尋"].Size = RibbonBarButton.MenuButtonSize.Medium;
-            Program.MainPanel.RibbonBarItems["進階"]["搜尋"].Click += delegate
-            {
-                new SearchForm().ShowDialog();
-            };
-
-            Program.MainPanel.RibbonBarItems["進階"]["批次"].Size = RibbonBarButton.MenuButtonSize.Medium;
-            Program.MainPanel.RibbonBarItems["進階"]["批次"]["Desktop 管理"].Click += delegate
-            {
-                new DesktopModuleManagerForm().ShowDialog();
-            };
-            Program.MainPanel.RibbonBarItems["進階"]["批次"]["UDM 管理"].Click += delegate
-            {
-                new UDMManagerForm().ShowDialog();
-            };
-
-            Program.MainPanel.SelectedSourceChanged += delegate
-            {
-                Program.MainPanel.RibbonBarItems["總務"]["單筆查詢"].Enable = Program.MainPanel.SelectedSource.Count > 0;
-            };
-            Program.MainPanel.RibbonBarItems["總務"]["單筆查詢"].Size = RibbonBarButton.MenuButtonSize.Medium;
-            Program.MainPanel.RibbonBarItems["總務"]["單筆查詢"].Click += delegate
-            {
-                new VirtualAccountFound.VAFinder().ShowDialog();
-            };
         }
     }
 }

@@ -29,7 +29,6 @@ namespace iCampusManager
         protected override void OnInitializeComplete(Exception error)
         {
             WatchChange(new TextBoxSource(txtTitle));
-            WatchChange(new TextBoxSource(txtDSNS));
             WatchChange(new TextBoxSource(txtGroup));
             WatchChange(new TextBoxSource(txtComment));
         }
@@ -39,7 +38,6 @@ namespace iCampusManager
             if (SchoolData != null)
             {
                 SchoolData.Title = txtTitle.Text;
-                SchoolData.DSNS = txtDSNS.Text;
                 SchoolData.Group = txtGroup.Text;
                 SchoolData.Comment = txtComment.Text;
                 SchoolData.Save();
@@ -77,20 +75,8 @@ namespace iCampusManager
             {
                 BeginChangeControlData();
                 txtTitle.Text = SchoolData.Title;
-                txtDSNS.Text = SchoolData.DSNS;
                 txtGroup.Text = SchoolData.Group;
                 txtComment.Text = SchoolData.Comment;
-                txtPhysicalUrl.Text = "解析中...";
-
-                Task task = Task.Factory.StartNew(() =>
-                {
-                    ResolveUrl();
-                }, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default);
-
-                task.ContinueWith(x =>
-                {
-                    txtPhysicalUrl.Text = PhysicalUrl;
-                }, TaskScheduler.FromCurrentSynchronizationContext());
 
                 ResetDirtyStatus();
             }

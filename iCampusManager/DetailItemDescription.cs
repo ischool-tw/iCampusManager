@@ -21,7 +21,7 @@ namespace iCampusManager
         {
             dynamic school = Program.GlobalSchoolCache[PrimaryKey];
 
-            lblName.Text = string.Format("{0} ({1})", (string)school.Title, (string)school.DSNS);
+            lblName.Text = string.Format("{0}", (string)school.Title);
         }
     }
 }

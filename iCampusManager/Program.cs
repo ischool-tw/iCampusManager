@@ -37,9 +37,6 @@ namespace iCampusManager
         {
             DSAServices.AutoDisplayLoadingMessageOnMotherForm();
 
-            if (DSAServices.AccessPoint.ToLower() != "campusman.ischool.com.tw")
-                throw new ApplicationStartupException("不支援，請登入 campusman.ischool.com.tw！");
-
             GlobalSchoolCache = new DynamicCache(); //建立一個空的快取。
 
             InitAsposeLicense();
@@ -47,17 +44,10 @@ namespace iCampusManager
             InitConfigurationStorage();
             InitMainPanel();
 
-            MainPanel.ListPaneContexMenu["執行 SQL 並匯出"].Click += delegate
-            {
-                new ExportQueryData().Export();
-            };
-
             new FieldManager();
             new DetailItems();
             new RibbonButtons();
             new ImportExport();//匯入學校資料
-
-
 
             RefreshFilteredSource();
 
@@ -195,7 +185,7 @@ namespace iCampusManager
             }
             catch (Exception) { }
 
-            return string.Format("ischool 中央管理系統〈FISCA：{0}〉〈{1}〉", version, user);
+            return string.Format("ischool〈FISCA：{0}〉〈{1}〉", version, user);
         }
 
         internal static string TrimModuleServerUrl(string urlPart)
