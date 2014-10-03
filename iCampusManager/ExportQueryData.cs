@@ -28,7 +28,7 @@ namespace iCampusManager
             }
         }
 
-        private static void ExecuteTasks(string sql)
+        public void ExecuteTasks(string sql)
         {
             MultiTaskingRunner runner = new MultiTaskingRunner();
 

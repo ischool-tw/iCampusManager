@@ -47,21 +47,65 @@ namespace iCampusManager
             InitConfigurationStorage();
             InitMainPanel();
 
+
+            MainPanel.ListPaneContexMenu["執行 SQL 並匯出"].Enable = false;
             MainPanel.ListPaneContexMenu["執行 SQL 並匯出"].Click += delegate
             {
                 new ExportQueryData().Export();
             };
+
+
 
             new FieldManager();
             new DetailItems();
             new RibbonButtons();
             new ImportExport();//匯入學校資料
 
+            Program.MainPanel.RibbonBarItems["批次作業"]["發送最新消息"].Enable = false;
+            Program.MainPanel.RibbonBarItems["批次作業"]["發送最新消息"].Image = Properties.Resources.speech_balloon_64;
+            Program.MainPanel.RibbonBarItems["批次作業"]["發送最新消息"].Size = FISCA.Presentation.RibbonBarButton.MenuButtonSize.Large;
+            Program.MainPanel.RibbonBarItems["批次作業"]["發送最新消息"].Click += delegate
+            {
+                SendNews send = new SendNews(Program.MainPanel.SelectedSource);
+                send.ShowDialog();
+            };
+
+            Program.MainPanel.RibbonBarItems["批次作業"]["SQL大神"].Enable = false;
+            Program.MainPanel.RibbonBarItems["批次作業"]["SQL大神"].Image = Properties.Resources.technology_64;
+            Program.MainPanel.RibbonBarItems["批次作業"]["SQL大神"].Size = FISCA.Presentation.RibbonBarButton.MenuButtonSize.Large;
+            Program.MainPanel.RibbonBarItems["批次作業"]["SQL大神"].Click += delegate
+            {
+                RunSQL RUN = new RunSQL();
+                RUN.ShowDialog();
+            };
+
+            Program.MainPanel.SelectedSourceChanged += delegate
+            {
+                if (Program.MainPanel.SelectedSource.Count == 0)
+                {
+                    SetEnable(false);
+                }
+                else
+                {
+                    SetEnable(true);
+                }
+            };
 
 
             RefreshFilteredSource();
 
             FISCA.Presentation.MotherForm.Form.Text = GetTitleText();
+        }
+
+        private static void SetEnable(bool key)
+        {
+            Program.MainPanel.RibbonBarItems["批次作業"]["發送最新消息"].Enable = key;
+            MainPanel.ListPaneContexMenu["執行 SQL 並匯出"].Enable = key;
+            Program.MainPanel.RibbonBarItems["資料統計"]["匯出"].Enable = key;
+            Program.MainPanel.RibbonBarItems["進階"]["搜尋"].Enable = key;
+            Program.MainPanel.RibbonBarItems["管理"]["刪除"].Enable = key;
+            Program.MainPanel.RibbonBarItems["批次作業"]["SQL大神"].Enable = key;
+
         }
 
         private static void InitMainPanel()

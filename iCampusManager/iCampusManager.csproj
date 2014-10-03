@@ -46,18 +46,22 @@
     <Reference Include="ActiproSoftware.Shared.Net20, Version=1.0.102.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\CommonAssemblies\ActiproSoftware.Shared.Net20.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="ActiproSoftware.SyntaxEditor.Addons.Web.Net20, Version=4.0.262.0, Culture=neutral, PublicKeyToken=21a821480e210563, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\CommonAssemblies\ActiproSoftware.SyntaxEditor.Addons.Web.Net20.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="ActiproSoftware.SyntaxEditor.Net20, Version=4.0.283.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\CommonAssemblies\ActiproSoftware.SyntaxEditor.Net20.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="ActiproSoftware.WinUICore.Net20, Version=1.0.102.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\CommonAssemblies\ActiproSoftware.WinUICore.Net20.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Aspose.Cells">
       <HintPath>..\..\..\Desktop\ischool desktop\modules\Campus\Aspose.Cells.dll</HintPath>
@@ -65,6 +69,12 @@
     </Reference>
     <Reference Include="Aspose.Chart">
       <HintPath>C:\Program Files (x86)\Aspose\Aspose.Chart\Bin\net2.0\Aspose.Chart.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DesktopLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Library\DesktopLib.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="DevComponents.DotNetBar2, Version=9.5.0.1, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
     <Reference Include="FISCA">
@@ -87,6 +97,16 @@
       <HintPath>..\..\..\Desktop\ischool desktop\kernel\FISCA.DSAClient.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="FISCA.DSAUtil, Version=3.9.0.10, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Library\FISCA.DSAUtil.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="FISCA.LogAgent, Version=1.0.0.6, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Library\FISCA.LogAgent.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="FISCA.Permission">
       <HintPath>..\..\..\Desktop\ischool desktop\kernel\FISCA.Permission.dll</HintPath>
       <Private>False</Private>
@@ -97,6 +117,21 @@
     </Reference>
     <Reference Include="FISCA.UDT">
       <HintPath>..\..\..\Desktop\ischool desktop\kernel\FISCA.UDT.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="IntelliSchool.DSA.ClientFramework, Version=1.2.2.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Library\IntelliSchool.DSA.ClientFramework.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SmartSchool.API.PlugIn, Version=0.0.0.3, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Library\SmartSchool.API.PlugIn.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SmartSchool.ErrorReporting, Version=1.0.2.3, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Library\SmartSchool.ErrorReporting.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -122,8 +157,44 @@
     <Compile Include="DefaultView.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="ImportExport\ExportSchoolObject.cs" />
+    <Compile Include="ImportExport\ExportStudentV2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImportExport\ExportStudentV2.designer.cs">
+      <DependentUpon>ExportStudentV2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="News\EnhancedErrorProvider.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="News\NewsCreator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="News\NewsCreator.designer.cs">
+      <DependentUpon>NewsCreator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="News\SendNews.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="News\SendNews.Designer.cs">
+      <DependentUpon>SendNews.cs</DependentUpon>
+    </Compile>
+    <Compile Include="News\Service.cs" />
     <Compile Include="PropertyComparer.cs" />
     <Compile Include="SortableBindingList.cs" />
+    <Compile Include="SQL\NewSql.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SQL\NewSql.Designer.cs">
+      <DependentUpon>NewSql.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SQL\RunSQL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SQL\RunSQL.Designer.cs">
+      <DependentUpon>RunSQL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="tool.cs" />
     <Compile Include="UDMManagerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -218,7 +289,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RibbonButtons.cs" />
-    <Compile Include="School.cs" />
+    <Compile Include="UDT\School.cs" />
     <Compile Include="SearchForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -231,6 +302,8 @@
     <Compile Include="SQLForm.Designer.cs">
       <DependentUpon>SQLForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UDT\SQLRecord.cs" />
+    <Compile Include="UDT\UDT_S.cs" />
     <Compile Include="VAFinder.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -248,6 +321,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DetailItemDescription.resx">
       <DependentUpon>DetailItemDescription.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImportExport\ExportStudentV2.resx">
+      <DependentUpon>ExportStudentV2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Items\BasicInfoItem.resx">
       <DependentUpon>BasicInfoItem.cs</DependentUpon>
@@ -282,6 +358,12 @@
     <EmbeddedResource Include="Items\WebGadgetItem.resx">
       <DependentUpon>WebGadgetItem.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="News\NewsCreator.resx">
+      <DependentUpon>NewsCreator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="News\SendNews.resx">
+      <DependentUpon>SendNews.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -298,6 +380,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SQLForm.resx">
       <DependentUpon>SQLForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SQL\NewSql.resx">
+      <DependentUpon>NewSql.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SQL\RunSQL.resx">
+      <DependentUpon>RunSQL.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UDMManagerForm.resx">
       <DependentUpon>UDMManagerForm.cs</DependentUpon>
@@ -322,18 +410,67 @@
     <None Include="Resources\lamp_search_128.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\technology_64.png" />
+    <None Include="Resources\zoom_64.png" />
+    <None Include="Resources\barchart_64.png" />
+    <None Include="Resources\speech_balloon_64.png" />
     <None Include="Resources\Export.Image.png" />
     <None Include="Resources\atom_close_128.png" />
     <None Include="Resources\atom_add_128.png" />
+    <Content Include="Library\ActiproSoftware.Shared.Net20.dll" />
+    <Content Include="Library\ActiproSoftware.Shared.Net20.xml" />
+    <Content Include="Library\ActiproSoftware.SyntaxEditor.Addons.Web.Net20.dll" />
+    <Content Include="Library\ActiproSoftware.SyntaxEditor.Addons.Web.Net20.xml" />
+    <Content Include="Library\ActiproSoftware.SyntaxEditor.Net20.dll" />
+    <Content Include="Library\ActiproSoftware.SyntaxEditor.Net20.xml" />
+    <Content Include="Library\ActiproSoftware.WinUICore.Net20.dll" />
+    <Content Include="Library\ActiproSoftware.WinUICore.Net20.xml" />
+    <Content Include="Library\Aspose.Cells.dll" />
+    <Content Include="Library\Aspose.Cells.xml" />
+    <Content Include="Library\Aspose.Chart.dll" />
+    <Content Include="Library\Aspose.Chart.xml" />
+    <Content Include="Library\DesktopLib.dll" />
+    <Content Include="Library\DesktopLib.pdb" />
+    <Content Include="Library\DevComponents.DotNetBar2.dll" />
+    <Content Include="Library\FISCA.Authentication.dll" />
+    <Content Include="Library\FISCA.Authentication.pdb" />
+    <Content Include="Library\FISCA.Authentication.xml" />
+    <Content Include="Library\FISCA.Core.dll" />
+    <Content Include="Library\FISCA.Core.pdb" />
+    <Content Include="Library\FISCA.Core.xml" />
+    <Content Include="Library\FISCA.Data.dll" />
+    <Content Include="Library\FISCA.Data.pdb" />
+    <Content Include="Library\FISCA.Data.xml" />
+    <Content Include="Library\FISCA.dll" />
+    <Content Include="Library\FISCA.DSAClient.dll" />
+    <Content Include="Library\FISCA.DSAClient.pdb" />
+    <Content Include="Library\FISCA.DSAClient.xml" />
+    <Content Include="Library\FISCA.DSAUtil.dll" />
+    <Content Include="Library\FISCA.DSAUtil.pdb" />
+    <Content Include="Library\FISCA.DSAUtil.xml" />
+    <Content Include="Library\FISCA.LogAgent.dll" />
+    <Content Include="Library\FISCA.LogAgent.pdb" />
+    <Content Include="Library\FISCA.LogAgent.xml" />
+    <Content Include="Library\FISCA.pdb" />
+    <Content Include="Library\FISCA.Permission.dll" />
+    <Content Include="Library\FISCA.Permission.pdb" />
+    <Content Include="Library\FISCA.Permission.xml" />
+    <Content Include="Library\FISCA.Presentation.dll" />
+    <Content Include="Library\FISCA.Presentation.pdb" />
+    <Content Include="Library\FISCA.Presentation.xml" />
+    <Content Include="Library\FISCA.UDT.dll" />
+    <Content Include="Library\FISCA.UDT.pdb" />
+    <Content Include="Library\FISCA.UDT.xml" />
+    <Content Include="Library\IntelliSchool.DSA.ClientFramework.dll" />
+    <Content Include="Library\IntelliSchool.DSA.ClientFramework.xml" />
+    <Content Include="Library\SmartSchool.API.PlugIn.dll" />
+    <Content Include="Library\SmartSchool.ErrorReporting.dll" />
+    <Content Include="Library\SmartSchool.ErrorReporting.pdb" />
+    <Content Include="Library\SmartSchool.ErrorReporting.xml" />
     <Content Include="Resources\atom_down_128.png" />
     <Content Include="Resources\atom_up_128.png" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DesktopLib\DesktopLib.csproj">
-      <Project>{6511b475-96a3-4c16-9ef6-a1393896cab4}</Project>
-      <Name>DesktopLib</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

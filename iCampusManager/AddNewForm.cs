@@ -39,8 +39,7 @@ namespace iCampusManager
         {
             try
             {
-                QueryHelper qh = new QueryHelper();
-                DataTable dt = qh.Select("select \"group\" from $school group by \"group\" order by \"group\"");
+                DataTable dt = tool._Q.Select("select \"group\" from $school group by \"group\" order by \"group\"");
 
                 foreach (DataRow row in dt.Rows)
                 {

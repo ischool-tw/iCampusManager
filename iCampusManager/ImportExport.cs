@@ -14,19 +14,23 @@ namespace iCampusManager
     {
         public ImportExport()
         {
-            Program.MainPanel.RibbonBarItems["匯入/匯出"]["匯入"].Image = Properties.Resources.Import_Image;
-            Program.MainPanel.RibbonBarItems["匯入/匯出"]["匯入"].Size = FISCA.Presentation.RibbonBarButton.MenuButtonSize.Large;
-            Program.MainPanel.RibbonBarItems["匯入/匯出"]["匯入"].Click += delegate
+            Program.MainPanel.RibbonBarItems["資料統計"]["匯入"].Image = Properties.Resources.Import_Image;
+            Program.MainPanel.RibbonBarItems["資料統計"]["匯入"].Size = FISCA.Presentation.RibbonBarButton.MenuButtonSize.Large;
+            Program.MainPanel.RibbonBarItems["資料統計"]["匯入"].Click += delegate
             {
                 ReadSchoolRecords();
             };
 
-            RibbonBarButton mb = Program.MainPanel.RibbonBarItems["匯入/匯出"]["匯出"];
+            Program.MainPanel.RibbonBarItems["資料統計"]["匯出"].Enable = false;
+            RibbonBarButton mb = Program.MainPanel.RibbonBarItems["資料統計"]["匯出"];
             mb.Image = Properties.Resources.Export_Image;
             mb.Size = FISCA.Presentation.RibbonBarButton.MenuButtonSize.Large;
             mb.Click += delegate
             {
-                MessageBox.Show("製作中!");
+                SmartSchool.API.PlugIn.Export.Exporter exporter = new ExportSchoolObject();
+                ExportStudentV2 wizard = new ExportStudentV2(exporter.Text, exporter.Image);
+                exporter.InitializeExport(wizard);
+                wizard.ShowDialog();
             };
         }
 

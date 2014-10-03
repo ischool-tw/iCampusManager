@@ -21,6 +21,7 @@ namespace iCampusManager
                     Program.RefreshFilteredSource();
             };
 
+            Program.MainPanel.RibbonBarItems["管理"]["刪除"].Enable = false;
             Program.MainPanel.RibbonBarItems["管理"]["刪除"].Image = Properties.Resources.atom_close_128;
             Program.MainPanel.RibbonBarItems["管理"]["刪除"].Size = RibbonBarButton.MenuButtonSize.Large;
             Program.MainPanel.RibbonBarItems["管理"]["刪除"].Click += delegate
@@ -39,12 +40,15 @@ namespace iCampusManager
             };
 
             //Program.MainPanel.RibbonBarItems["進階"]["搜尋"].Image = Properties.Resources.lamp_search_128;
+            Program.MainPanel.RibbonBarItems["進階"]["搜尋"].Enable = false;
+            Program.MainPanel.RibbonBarItems["進階"]["搜尋"].Image = Properties.Resources.zoom_64;
             Program.MainPanel.RibbonBarItems["進階"]["搜尋"].Size = RibbonBarButton.MenuButtonSize.Medium;
             Program.MainPanel.RibbonBarItems["進階"]["搜尋"].Click += delegate
             {
                 new SearchForm().ShowDialog();
             };
 
+            Program.MainPanel.RibbonBarItems["進階"]["批次"].Image = Properties.Resources.barchart_64;
             Program.MainPanel.RibbonBarItems["進階"]["批次"].Size = RibbonBarButton.MenuButtonSize.Medium;
             Program.MainPanel.RibbonBarItems["進階"]["批次"]["Desktop 管理"].Click += delegate
             {
